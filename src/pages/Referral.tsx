@@ -59,31 +59,31 @@ export function Referral() {
   const totalEarnings = user?.referralEarnings || (totalReferralsCount * 3.5);
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white pb-32 pt-2 select-none font-sans">
+    <div className="min-h-screen bg-tg-bg text-tg-text pb-32 pt-2 select-none font-sans">
       <div className="max-w-md mx-auto px-4 space-y-3.5">
         
-        {/* TOP HERO CARD: Clean dark card #1C1C1E */}
-        <div className="rounded-[28px] bg-[#1C1C1E] p-5 text-center">
+        {/* TOP HERO CARD */}
+        <div className="rounded-[28px] bg-tg-secondary border border-tg-separator p-5 text-center shadow-sm">
           
-          <h1 className="text-[22px] sm:text-[24px] font-bold text-white tracking-tight mb-2">
+          <h1 className="text-[22px] sm:text-[24px] font-bold text-tg-text tracking-tight mb-2">
             Referral & Partner Program
           </h1>
 
-          <div className="inline-flex items-center justify-center px-3.5 py-1 rounded-full bg-[#242426] mb-5">
-            <span className="text-[12px] font-bold text-[#2EA5FF] tracking-wide">
+          <div className="inline-flex items-center justify-center px-3.5 py-1 rounded-full bg-tg-bg border border-tg-separator mb-5">
+            <span className="text-[12px] font-bold text-tg-link tracking-wide">
               VIP Tiers • Instant USD Payout
             </span>
           </div>
 
           <div className="flex items-end justify-center space-x-3 pt-1">
-            <div className="w-[110px] h-[92px] rounded-t-2xl bg-[#242426] flex items-center justify-center">
+            <div className="w-[110px] h-[92px] rounded-t-2xl bg-tg-bg border-t border-x border-tg-separator flex items-center justify-center">
               <svg className="w-10 h-10 text-amber-400" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C12 6.627 6.627 12 0 12C6.627 12 12 17.373 12 24C12 17.373 17.373 12 24 12C17.373 12 12 6.627 12 0Z" />
               </svg>
             </div>
 
-            <div className="w-[110px] h-[92px] rounded-t-2xl bg-[#2C2C2E] flex items-center justify-center">
-              <svg className="w-10 h-10 text-[#2EA5FF]" viewBox="0 0 24 24" fill="currentColor">
+            <div className="w-[110px] h-[92px] rounded-t-2xl bg-tg-bg/70 border-t border-x border-tg-separator flex items-center justify-center">
+              <svg className="w-10 h-10 text-tg-link" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M16 11c1.66 0 2.99-1.34 2.99-3S17.66 5 16 5s-3 1.34-3 3 1.34 3 3 3zm-8 0c1.66 0 2.99-1.34 2.99-3S9.66 5 8 5 5 6.34 5 8s1.34 3 3 3zm0 2c-2.33 0-7 1.17-7 3.5V19h14v-2.5c0-2.33-4.67-3.5-7-3.5zm8 0c-.29 0-.62.02-.97.05 1.16.84 1.97 1.97 1.97 3.45V19h6v-2.5c0-2.33-4.67-3.5-7-3.5z" />
               </svg>
             </div>
@@ -94,45 +94,45 @@ export function Referral() {
         <div className="space-y-2.5">
           
           {/* Card 1 */}
-          <div className="bg-[#1C1C1E] rounded-2xl p-4 flex items-center space-x-3.5">
-            <div className="w-10 h-10 rounded-xl bg-[#2EA5FF]/15 flex items-center justify-center text-[#2EA5FF] shrink-0">
+          <div className="bg-tg-secondary border border-tg-separator rounded-2xl p-4 flex items-center space-x-3.5 shadow-sm">
+            <div className="w-10 h-10 rounded-xl bg-tg-link/15 flex items-center justify-center text-tg-link shrink-0">
               <HandCoins className="w-5 h-5" />
             </div>
             <div className="text-left min-w-0 flex-1">
-              <h4 className="text-[14.5px] font-bold text-white tracking-tight">
+              <h4 className="text-[14.5px] font-bold text-tg-text tracking-tight">
                 Loan Commission & Cashback
               </h4>
-              <p className="text-[12px] text-[#8E8E93] font-medium leading-relaxed mt-0.5">
+              <p className="text-[12px] text-tg-hint font-medium leading-relaxed mt-0.5">
                 Earn up to 30% instant cash commission whenever your referred friends take out or service a loan.
               </p>
             </div>
           </div>
 
           {/* Card 2 */}
-          <div className="bg-[#1C1C1E] rounded-2xl p-4 flex items-center space-x-3.5">
+          <div className="bg-tg-secondary border border-tg-separator rounded-2xl p-4 flex items-center space-x-3.5 shadow-sm">
             <div className="w-10 h-10 rounded-xl bg-amber-500/15 flex items-center justify-center text-amber-400 shrink-0">
               <Crown className="w-5 h-5" />
             </div>
             <div className="text-left min-w-0 flex-1">
-              <h4 className="text-[14.5px] font-bold text-white tracking-tight">
+              <h4 className="text-[14.5px] font-bold text-tg-text tracking-tight">
                 High-Volume Inviter VIP Tiers
               </h4>
-              <p className="text-[12px] text-[#8E8E93] font-medium leading-relaxed mt-0.5">
+              <p className="text-[12px] text-tg-hint font-medium leading-relaxed mt-0.5">
                 Inviting 10+ active members unlocks VIP status with up to 50% revenue share across all their activities.
               </p>
             </div>
           </div>
 
           {/* Card 3 */}
-          <div className="bg-[#1C1C1E] rounded-2xl p-4 flex items-center space-x-3.5">
+          <div className="bg-tg-secondary border border-tg-separator rounded-2xl p-4 flex items-center space-x-3.5 shadow-sm">
             <div className="w-10 h-10 rounded-xl bg-emerald-500/15 flex items-center justify-center text-emerald-400 shrink-0">
               <Coins className="w-5 h-5" />
             </div>
             <div className="text-left min-w-0 flex-1">
-              <h4 className="text-[14.5px] font-bold text-white tracking-tight">
+              <h4 className="text-[14.5px] font-bold text-tg-text tracking-tight">
                 Lifetime Deposit & Action Earnings
               </h4>
-              <p className="text-[12px] text-[#8E8E93] font-medium leading-relaxed mt-0.5">
+              <p className="text-[12px] text-tg-hint font-medium leading-relaxed mt-0.5">
                 Invited friends remain permanently linked to your account with recurring commissions on every deposit.
               </p>
             </div>
@@ -143,19 +143,19 @@ export function Referral() {
         {/* REFERRAL LINK BOX */}
         <div className="pt-1 space-y-2.5">
           <div className="text-left px-1">
-            <span className="text-[12px] font-semibold text-[#8E8E93]">
+            <span className="text-[12px] font-semibold text-tg-hint">
               Your link for friends
             </span>
           </div>
 
           <div 
             onClick={handleCopyLink}
-            className="w-full bg-[#1C1C1E] hover:bg-[#242426] rounded-2xl px-4 py-3.5 flex items-center justify-between text-xs sm:text-sm font-mono text-[#8E8E93] cursor-pointer active:scale-[0.99] transition-all"
+            className="w-full bg-tg-secondary border border-tg-separator hover:bg-tg-bg rounded-2xl px-4 py-3.5 flex items-center justify-between text-xs sm:text-sm font-mono text-tg-hint cursor-pointer active:scale-[0.99] transition-all shadow-sm"
           >
-            <span className="truncate pr-2 select-all font-mono tracking-tight text-white">
+            <span className="truncate pr-2 select-all font-mono tracking-tight text-tg-text">
               {inviteLink}
             </span>
-            <div className="p-1 rounded-lg text-[#8E8E93] hover:text-white transition-colors shrink-0">
+            <div className="p-1 rounded-lg text-tg-hint hover:text-tg-text transition-colors shrink-0">
               {copied ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4" />}
             </div>
           </div>
@@ -165,7 +165,7 @@ export function Referral() {
             <button
               onClick={handleCopyLink}
               type="button"
-              className="w-full py-3.5 px-4 rounded-2xl bg-[#1C1C1E] hover:bg-[#242426] active:scale-95 text-white font-bold text-sm transition-all flex items-center justify-center space-x-2 cursor-pointer border-0"
+              className="w-full py-3.5 px-4 rounded-2xl bg-tg-secondary border border-tg-separator hover:bg-tg-bg active:scale-95 text-tg-text font-bold text-sm transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm"
             >
               {copied ? (
                 <>
@@ -174,7 +174,7 @@ export function Referral() {
                 </>
               ) : (
                 <>
-                  <Copy className="w-4 h-4 text-[#8E8E93]" />
+                  <Copy className="w-4 h-4 text-tg-hint" />
                   <span>Copy link</span>
                 </>
               )}
@@ -183,39 +183,39 @@ export function Referral() {
             <button
               onClick={handleShareLink}
               type="button"
-              className="w-full py-3.5 px-4 rounded-2xl bg-gradient-to-r from-[#2EA5FF] to-[#007AFF] hover:brightness-105 active:scale-95 text-white font-bold text-sm transition-all flex items-center justify-center space-x-2 cursor-pointer border-0"
+              className="w-full py-3.5 px-4 rounded-2xl bg-tg-button hover:opacity-90 active:scale-95 text-tg-button-text font-bold text-sm transition-all flex items-center justify-center space-x-2 cursor-pointer shadow-sm"
             >
-              <Share2 className="w-4 h-4 text-white" />
+              <Share2 className="w-4 h-4 text-tg-button-text" />
               <span>Share</span>
             </button>
           </div>
         </div>
 
         {/* CLEAN STATS STRIP */}
-        <div className="bg-[#1C1C1E] rounded-2xl p-4 flex items-center justify-around text-center mt-3">
+        <div className="bg-tg-secondary border border-tg-separator rounded-2xl p-4 flex items-center justify-around text-center mt-3 shadow-sm">
           <div>
-            <span className="text-[11px] font-medium text-[#8E8E93] block">
+            <span className="text-[11px] font-medium text-tg-hint block">
               Total Invites
             </span>
-            <span className="text-[18px] font-bold text-white font-mono mt-0.5 block">
+            <span className="text-[18px] font-bold text-tg-text font-mono mt-0.5 block">
               {totalReferralsCount}
             </span>
           </div>
-          <div className="w-[1px] h-8 bg-white/10" />
+          <div className="w-[1px] h-8 bg-tg-separator" />
           <div>
-            <span className="text-[11px] font-medium text-[#8E8E93] block">
+            <span className="text-[11px] font-medium text-tg-hint block">
               Total Earned
             </span>
             <span className="text-[18px] font-bold text-emerald-400 font-mono mt-0.5 block">
               ${totalEarnings.toFixed(2)}
             </span>
           </div>
-          <div className="w-[1px] h-8 bg-white/10" />
+          <div className="w-[1px] h-8 bg-tg-separator" />
           <div>
-            <span className="text-[11px] font-medium text-[#8E8E93] block">
+            <span className="text-[11px] font-medium text-tg-hint block">
               Max Tier
             </span>
-            <span className="text-[18px] font-bold text-[#2EA5FF] font-mono mt-0.5 block">
+            <span className="text-[18px] font-bold text-tg-link font-mono mt-0.5 block">
               Up to 50%
             </span>
           </div>

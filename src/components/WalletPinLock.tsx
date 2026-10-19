@@ -322,7 +322,7 @@ export const WalletPinLock: React.FC<WalletPinLockProps> = ({
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
-              className="bg-[#1C1C1E] border border-[#233242] rounded-3xl p-5 max-w-xs w-full text-center space-y-3 shadow-2xl"
+              className="bg-[#1C1C1E] rounded-3xl p-5 max-w-xs w-full text-center space-y-3"
             >
               <div className="w-10 h-10 rounded-full bg-[#2EA5FF]/10 text-[#2EA5FF] flex items-center justify-center mx-auto">
                 <Lock className="w-5 h-5" />

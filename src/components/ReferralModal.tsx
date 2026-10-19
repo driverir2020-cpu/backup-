@@ -114,14 +114,14 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
                 onClose();
               }
             }}
-            className="relative w-full max-w-lg bg-[#1C1C1E] border-t sm:border border-white/[0.06] sm:rounded-3xl rounded-t-[24px] z-10 max-h-[92vh] flex flex-col overflow-hidden text-white transform-gpu will-change-transform font-telegram touch-pan-y"
+            className="relative w-full max-w-lg bg-tg-secondary border-t sm:border border-tg-separator sm:rounded-3xl rounded-t-[24px] z-10 max-h-[92vh] flex flex-col overflow-hidden text-tg-text transform-gpu will-change-transform font-telegram touch-pan-y"
           >
             {/* Top Sheet Drag Handle (Mobile) */}
-            <div className="w-9 h-1 bg-white/25 rounded-full mx-auto mt-2.5 mb-1 sm:hidden shrink-0" />
+            <div className="w-9 h-1 bg-tg-hint/30 rounded-full mx-auto mt-2.5 mb-1 sm:hidden shrink-0" />
 
             {/* Header Bar */}
-            <div className="px-4 py-3 flex items-center justify-between shrink-0 border-b border-white/[0.06]">
-              <span className="text-xs font-medium text-[#7D8B9B] uppercase tracking-wider">
+            <div className="px-4 py-3 flex items-center justify-between shrink-0 border-b border-tg-separator">
+              <span className="text-xs font-medium text-tg-hint uppercase tracking-wider">
                 {t('referral.partnership', 'Partnership')}
               </span>
 
@@ -129,7 +129,7 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
                 Component="button"
                 type="button"
                 onClick={onClose}
-                className="w-7 h-7 rounded-full bg-[#2C2C2E] hover:bg-[#38383A] flex items-center justify-center text-[#7D8B9B] hover:text-white transition-all cursor-pointer"
+                className="w-7 h-7 rounded-full bg-tg-bg hover:opacity-80 flex items-center justify-center text-tg-hint hover:text-tg-text transition-all cursor-pointer border-0"
               >
                 <X className="w-4 h-4" />
               </Tappable>
@@ -138,47 +138,47 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
             {/* Scrollable Content */}
             <div className="flex-1 overflow-y-auto px-4 pb-8 space-y-3.5 select-none no-scrollbar">
               
-              {/* Top Visual Graphic & Header (Matching Major Duck/Graphic Hero) */}
+              {/* Top Visual Graphic & Header */}
               <div className="flex flex-col items-center justify-center pt-1 pb-2 text-center">
-                <div className="w-20 h-20 rounded-3xl bg-gradient-to-tr from-[#2EA5FF] via-[#0284C7] to-[#06B6D4] p-0.5 flex items-center justify-center shadow-lg">
-                  <div className="w-full h-full rounded-[22px] bg-[#1C1C1E] flex items-center justify-center relative overflow-hidden">
+                <div className="w-20 h-20 rounded-3xl bg-tg-button/20 border border-tg-link p-0.5 flex items-center justify-center shadow-lg">
+                  <div className="w-full h-full rounded-[22px] bg-tg-secondary flex items-center justify-center relative overflow-hidden">
                     <div className="flex flex-col items-center justify-center">
-                      <div className="w-9 h-9 rounded-2xl bg-[#2EA5FF]/20 text-[#2EA5FF] flex items-center justify-center mb-1">
-                        <FaReferralIcon className="w-5 h-5" />
+                      <div className="w-9 h-9 rounded-2xl bg-tg-button/20 text-tg-link flex items-center justify-center mb-1">
+                        <FaReferralIcon className="w-5 h-5 text-tg-link" />
                       </div>
                       <span className="text-[10px] font-extrabold text-amber-400 font-sans tracking-wide">5% COMMISSION</span>
                     </div>
                   </div>
                 </div>
 
-                <h2 className="text-[22px] font-bold text-white tracking-tight mt-3 leading-snug">
+                <h2 className="text-[22px] font-bold text-tg-text tracking-tight mt-3 leading-snug">
                   {t('referral.title', 'Referral Program')}
                 </h2>
-                <p className="text-[12px] text-[#7D8B9B] max-w-[300px] mx-auto mt-1 leading-relaxed">
+                <p className="text-[12px] text-tg-hint max-w-[300px] mx-auto mt-1 leading-relaxed">
                   {t('referral.subtitle', 'Invite friends and earn 5% instant commission whenever they top up or deposit.')}
                 </p>
               </div>
 
               {/* Main Card: 5% Deposit Commission Program */}
-              <div className="bg-[#1C1C1E] rounded-[22px] p-4 space-y-4">
+              <div className="bg-tg-bg border border-tg-separator rounded-[22px] p-4 space-y-4">
                 
                 {/* 5% Commission Highlight Box */}
-                <div className="bg-[#242426] border border-[#2EA5FF]/30 rounded-[18px] p-3.5 space-y-2">
+                <div className="bg-tg-secondary border border-tg-separator rounded-[18px] p-3.5 space-y-2">
                   <div className="flex items-center justify-between">
                     <div className="flex items-center space-x-2.5">
-                      <div className="w-8 h-8 rounded-xl bg-[#2EA5FF] flex items-center justify-center text-white shrink-0 shadow-md">
+                      <div className="w-8 h-8 rounded-xl bg-tg-button flex items-center justify-center text-white shrink-0 shadow-md">
                         <FaDollarIcon className="w-4.5 h-4.5 text-white" />
                       </div>
-                      <span className="text-[14px] font-bold text-white tracking-tight">
+                      <span className="text-[14px] font-bold text-tg-text tracking-tight">
                         {t('referral.commissionTitle', '5% Deposit Commission')}
                       </span>
                     </div>
-                    <span className="px-2.5 py-0.5 bg-[#2EA5FF]/20 text-[#2EA5FF] text-[11px] font-extrabold rounded-full font-sans tracking-tight">
+                    <span className="px-2.5 py-0.5 bg-tg-button/15 text-tg-link text-[11px] font-extrabold rounded-full font-sans tracking-tight">
                       +5%
                     </span>
                   </div>
 
-                  <p className="text-[12px] text-[#C5D1DE] leading-relaxed">
+                  <p className="text-[12px] text-tg-hint leading-relaxed">
                     {t('referral.commissionDesc', 'If you invite someone and they fund or deposit into their account, 5% of that deposit is instantly allocated directly to your wallet.')}
                   </p>
                 </div>
@@ -186,28 +186,28 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
                 {/* Clear Commission Breakdown Points */}
                 <div className="space-y-3 px-1">
                   <div className="flex items-start space-x-3">
-                    <div className="w-7 h-7 rounded-lg bg-emerald-500/15 text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
-                      <FaEnergyIcon className="w-4 h-4" />
+                    <div className="w-7 h-7 rounded-lg bg-emerald-500/15 text-emerald-500 flex items-center justify-center shrink-0 mt-0.5">
+                      <FaEnergyIcon className="w-4 h-4 text-emerald-500" />
                     </div>
                     <div>
-                      <h4 className="text-[13px] font-bold text-white leading-tight">
+                      <h4 className="text-[13px] font-bold text-tg-text leading-tight">
                         {t('referral.commissionPerk1Title', 'Instant 5% Payout')}
                       </h4>
-                      <p className="text-[11px] text-[#7D8B9B] leading-snug mt-0.5">
+                      <p className="text-[11px] text-tg-hint leading-snug mt-0.5">
                         {t('referral.commissionPerk1Desc', 'Whenever your referred partner makes any deposit, 5% is immediately credited to your wallet balance.')}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-start space-x-3">
-                    <div className="w-7 h-7 rounded-lg bg-[#2EA5FF]/15 text-[#2EA5FF] flex items-center justify-center shrink-0 mt-0.5">
+                    <div className="w-7 h-7 rounded-lg bg-tg-button/15 text-tg-link flex items-center justify-center shrink-0 mt-0.5">
                       <Check className="w-4 h-4 stroke-[2.5]" />
                     </div>
                     <div>
-                      <h4 className="text-[13px] font-bold text-white leading-tight">
+                      <h4 className="text-[13px] font-bold text-tg-text leading-tight">
                         {t('referral.commissionPerk2Title', 'Fully Unlocked & Withdrawable')}
                       </h4>
-                      <p className="text-[11px] text-[#7D8B9B] leading-snug mt-0.5">
+                      <p className="text-[11px] text-tg-hint leading-snug mt-0.5">
                         {t('referral.commissionPerk2Desc', 'No hidden conditions or locks. Referral earnings are instantly available for withdrawal or arbitrage trading.')}
                       </p>
                     </div>
@@ -220,7 +220,7 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
                     Component="button"
                     type="button"
                     onClick={handleShare}
-                    className="flex-1 py-3.5 px-4 bg-[#2481CC] hover:bg-[#1D74BD] text-white text-[13.5px] font-bold rounded-2xl flex items-center justify-center space-x-2 transition-all cursor-pointer font-telegram overflow-hidden"
+                    className="flex-1 py-3.5 px-4 bg-tg-button hover:opacity-90 active:scale-[0.98] text-white text-[13.5px] font-bold rounded-2xl flex items-center justify-center space-x-2 transition-all cursor-pointer font-telegram overflow-hidden border-0"
                   >
                     <FaShareIcon className="w-4 h-4 text-white" />
                     <span>{t('referral.inviteFriends', 'Invite Friends')}</span>
@@ -230,21 +230,21 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
                     Component="button"
                     type="button"
                     onClick={handleCopy}
-                    className="w-12 h-12 bg-[#242426] hover:bg-[#38383A] text-[#7D8B9B] hover:text-white rounded-2xl flex items-center justify-center transition-all cursor-pointer shrink-0 overflow-hidden"
+                    className="w-12 h-12 bg-tg-secondary border border-tg-separator hover:opacity-90 active:scale-95 text-tg-hint hover:text-tg-text rounded-2xl flex items-center justify-center transition-all cursor-pointer shrink-0 overflow-hidden"
                     title="Copy Invite Link"
                   >
-                    {copied ? <Check className="w-5 h-5 text-[#2EA5FF]" /> : <Copy className="w-5 h-5" />}
+                    {copied ? <Check className="w-5 h-5 text-tg-link" /> : <Copy className="w-5 h-5" />}
                   </Tappable>
                 </div>
               </div>
 
               {/* Major Rewards / Referral Earnings Card */}
-              <div className="bg-[#1C1C1E] rounded-[20px] p-3.5 flex items-center justify-between">
+              <div className="bg-tg-bg border border-tg-separator rounded-[20px] p-3.5 flex items-center justify-between">
                 <div className="flex items-center space-x-3">
-                  <div className="w-8 h-8 rounded-xl bg-[#8B5CF6] flex items-center justify-center text-white shrink-0">
+                  <div className="w-8 h-8 rounded-xl bg-purple-500 flex items-center justify-center text-white shrink-0">
                     <FaEarningsIcon className="w-4 h-4 text-white" />
                   </div>
-                  <span className="text-[13.5px] font-bold text-white tracking-tight">
+                  <span className="text-[13.5px] font-bold text-tg-text tracking-tight">
                     {t('referral.rewards', 'Arbitrage Rewards')}
                   </span>
                 </div>
@@ -253,19 +253,19 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
                   <span className="text-[13px] font-bold text-amber-400 font-sans">
                     ${totalEarnings.toFixed(2)} USD
                   </span>
-                  <ChevronRight className="w-4 h-4 text-[#4A5B6D]" />
+                  <ChevronRight className="w-4 h-4 text-tg-hint" />
                 </div>
               </div>
 
-              {/* Referrals Section (Matching Screenshot 2 "REFERRALS: 7 / No referral earnings yet") */}
+              {/* Referrals Section */}
               <div className="pt-2">
-                <div className="px-1 mb-2 flex items-center justify-between text-[11px] font-bold text-[#7D8B9B] tracking-wider uppercase">
+                <div className="px-1 mb-2 flex items-center justify-between text-[11px] font-bold text-tg-hint tracking-wider uppercase">
                   <span>{t('referral.referralsCount', { count: totalReferralsCount, defaultValue: `REFERRALS: ${totalReferralsCount}` })}</span>
                   {totalReferralsCount > 0 && <span>{t('referral.active', 'Active')}</span>}
                 </div>
 
                 {loading ? (
-                  <div className="bg-[#1C1C1E] rounded-[20px] py-4 text-center text-xs text-[#7D8B9B]">
+                  <div className="bg-tg-bg border border-tg-separator rounded-[20px] py-4 text-center text-xs text-tg-hint">
                     <span>{t('referral.loading', 'Loading partners...')}</span>
                   </div>
                 ) : referrals.length > 0 ? (
@@ -278,34 +278,33 @@ export function ReferralModal({ isOpen, onClose, currentUser, botUsername = 'Ton
                       return (
                         <div 
                           key={refUser.id || idx}
-                          className="bg-[#1C1C1E] rounded-[18px] p-3 flex items-center justify-between"
+                          className="bg-tg-bg border border-tg-separator rounded-[18px] p-3 flex items-center justify-between"
                         >
                           <div className="flex items-center space-x-3 min-w-0">
                             <UserAvatar user={refUser} size="md" />
                             <div className="min-w-0">
-                              <span className="text-xs font-bold text-white truncate block">
+                              <span className="text-xs font-bold text-tg-text truncate block">
                                 {refUser.firstName || `@${refUser.telegramUsername || 'Trader'}`}
                               </span>
-                              <span className="text-[10px] text-[#7D8B9B] font-mono">
+                              <span className="text-[10px] text-tg-hint font-mono">
                                 @{refUser.telegramUsername || 'trader'}
                               </span>
                             </div>
                           </div>
 
                           <div className="text-right shrink-0">
-                            <span className="px-2 py-0.5 bg-emerald-500/15 text-emerald-400 text-[10px] font-bold rounded-full block mb-0.5">
+                            <span className="px-2 py-0.5 bg-emerald-500/15 text-emerald-500 text-[10px] font-bold rounded-full block mb-0.5">
                               {t('referral.activeTag', 'Active Member')}
                             </span>
-                            <span className="text-[9px] text-[#7D8B9B] font-mono">{joinedDate}</span>
+                            <span className="text-[9px] text-tg-hint font-mono">{joinedDate}</span>
                           </div>
                         </div>
                       );
                     })}
                   </div>
                 ) : (
-                  /* 1:1 Matching "No referral earnings yet" pill/container */
-                  <div className="bg-[#1C1C1E] rounded-[20px] py-4 text-center">
-                    <span className="text-xs font-semibold text-[#58687A]">
+                  <div className="bg-tg-bg border border-tg-separator rounded-[20px] py-4 text-center">
+                    <span className="text-xs font-semibold text-tg-hint">
                       {t('referral.noEarnings', 'No referral earnings yet')}
                     </span>
                   </div>

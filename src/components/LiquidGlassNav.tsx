@@ -17,7 +17,7 @@ function ProfileAvatarFill({ user }: { user: any }) {
       <img
         src={photo}
         alt={displayName}
-        className="w-[44px] h-[44px] rounded-full object-cover select-none pointer-events-none ring-1 ring-white/20 shadow-sm"
+        className="w-[44px] h-[44px] rounded-full object-cover select-none pointer-events-none ring-1 ring-tg-separator shadow-sm"
         referrerPolicy="no-referrer"
         onError={() => setImgError(true)}
       />
@@ -25,7 +25,7 @@ function ProfileAvatarFill({ user }: { user: any }) {
   }
 
   return (
-    <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center font-bold text-white text-[15px] bg-gradient-to-b from-[#2C2C2E] to-[#1C1C1E] ring-1 ring-white/20 select-none pointer-events-none shadow-sm">
+    <div className="w-[44px] h-[44px] rounded-full flex items-center justify-center font-bold text-tg-text text-[15px] bg-tg-secondary ring-1 ring-tg-separator select-none pointer-events-none shadow-sm">
       {initial}
     </div>
   );
@@ -48,7 +48,7 @@ export function LiquidGlassNav() {
       renderIcon: (active: boolean) => (
         <FaWalletIcon
           className={`w-[20px] h-[20px] transition-all duration-200 ${
-            active ? 'text-[#007AFF]' : 'text-[#8E8E93]'
+            active ? 'text-tg-link' : 'text-tg-hint'
           }`}
         />
       ),
@@ -60,7 +60,7 @@ export function LiquidGlassNav() {
       renderIcon: (active: boolean) => (
         <HandCoins
           className={`w-[20px] h-[20px] transition-all duration-200 ${
-            active ? 'text-[#007AFF]' : 'text-[#8E8E93]'
+            active ? 'text-tg-link' : 'text-tg-hint'
           }`}
         />
       ),
@@ -72,7 +72,7 @@ export function LiquidGlassNav() {
       renderIcon: (active: boolean) => (
         <FaReferralIcon
           className={`w-[20px] h-[20px] transition-all duration-200 ${
-            active ? 'text-[#007AFF]' : 'text-[#8E8E93]'
+            active ? 'text-tg-link' : 'text-tg-hint'
           }`}
         />
       ),
@@ -103,9 +103,9 @@ export function LiquidGlassNav() {
         title="Royal Spin"
       >
         <div className="z-10 flex items-center justify-center">
-          <Sparkles className={`w-[20px] h-[20px] transition-colors duration-200 ${isSpinActive ? 'text-[#007AFF]' : 'text-[#8E8E93]'}`} />
+          <Sparkles className={`w-[20px] h-[20px] transition-colors duration-200 ${isSpinActive ? 'text-tg-link' : 'text-tg-hint'}`} />
         </div>
-        <span className={`label z-10 ${isSpinActive ? 'text-[#007AFF]' : 'text-[#8E8E93]'}`}>Spin</span>
+        <span className={`label z-10 ${isSpinActive ? 'text-tg-link' : 'text-tg-hint'}`}>Spin</span>
       </button>
 
       {/* ---------- Center Pill Group ---------- */}

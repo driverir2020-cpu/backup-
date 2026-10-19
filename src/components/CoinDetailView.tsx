@@ -259,7 +259,7 @@ export const CoinDetailView: React.FC<CoinDetailViewProps> = ({
       </div>
 
       {/* Main Asset Hero Card (Matches Screenshot with Coin Color Chart) */}
-      <div className="bg-[#1C1C1E] rounded-[28px] p-5 border border-white/[0.06] shadow-xl relative overflow-hidden mb-6">
+      <div className="bg-[#1C1C1E] rounded-[28px] p-5 relative overflow-hidden mb-6">
         {/* Top Row: Coin Icon, Balance, Name & 24h USD Valuation */}
         <div className="flex items-start justify-between">
           <div className="flex items-center space-x-3 rtl:space-x-reverse">
@@ -424,7 +424,7 @@ export const CoinDetailView: React.FC<CoinDetailViewProps> = ({
                   onSelectTxDetail(item.rawTx);
                 }
               }}
-              className="bg-[#1C1C1E] rounded-[22px] p-3.5 flex items-center justify-between hover:bg-[#242426] active:scale-[0.99] transition-all cursor-pointer group select-none shadow-sm"
+              className="bg-[#1C1C1E] rounded-[22px] p-3.5 flex items-center justify-between hover:bg-[#242426] active:scale-[0.99] transition-all cursor-pointer group select-none"
             >
               {/* Left: Direction icon or Stars coin icon, type, address and optional memo */}
               <div className="flex items-center space-x-3.5 rtl:space-x-reverse min-w-0">

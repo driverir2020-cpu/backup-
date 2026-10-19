@@ -379,16 +379,16 @@ export function InternalSecurityDesk({ onClose }: InternalSecurityDeskProps) {
   if (!isAdmin && user?.role !== 'admin') {
     return (
       <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/80 backdrop-blur-xl">
-        <div className="w-full max-w-sm p-6 text-center bg-[#1C1C1E] border border-white/10 rounded-2xl shadow-2xl">
+        <div className="w-full max-w-sm p-6 text-center bg-tg-secondary border border-tg-separator rounded-2xl shadow-2xl">
           <div className="w-12 h-12 mx-auto mb-3 flex items-center justify-center rounded-2xl bg-rose-500/15 text-rose-400">
             <Lock className="w-6 h-6" />
           </div>
-          <h2 className="text-base font-bold text-white">Access Restricted</h2>
-          <p className="mt-1 text-xs text-white/50">You do not have permission to access this panel.</p>
+          <h2 className="text-base font-bold text-tg-text">Access Restricted</h2>
+          <p className="mt-1 text-xs text-tg-hint">You do not have permission to access this panel.</p>
           {onClose && (
             <button
               onClick={onClose}
-              className="w-full mt-5 py-2.5 bg-white/10 hover:bg-white/15 text-white text-xs font-semibold rounded-xl transition-all"
+              className="w-full mt-5 py-2.5 bg-tg-button hover:opacity-90 text-white text-xs font-semibold rounded-xl transition-all border-0 cursor-pointer"
             >
               Close
             </button>
@@ -399,19 +399,19 @@ export function InternalSecurityDesk({ onClose }: InternalSecurityDeskProps) {
   }
 
   return (
-    <div className="fixed inset-0 z-50 flex flex-col bg-[#0F0F12] text-white select-none overflow-hidden font-sans">
+    <div className="fixed inset-0 z-50 flex flex-col bg-tg-bg text-tg-text select-none overflow-hidden font-sans">
       
       {/* ========================================================================= */}
-      {/* macOS WINDOW TOOLBAR                                                      */}
+      {/* WINDOW TOOLBAR                                                            */}
       {/* ========================================================================= */}
-      <div className="h-14 px-4 bg-[#18181C]/90 backdrop-blur-xl border-b border-white/[0.07] flex items-center justify-between shrink-0">
+      <div className="h-14 px-4 bg-tg-secondary backdrop-blur-xl border-b border-tg-separator flex items-center justify-between shrink-0">
         
-        {/* Left: Window Traffic Lights / Close */}
+        {/* Left: Window Close & Title */}
         <div className="flex items-center space-x-2 space-x-reverse">
           {onClose && (
             <button
               onClick={onClose}
-              className="w-7 h-7 flex items-center justify-center rounded-full bg-white/[0.08] hover:bg-white/[0.15] active:scale-95 transition-all text-white/70 hover:text-white"
+              className="w-7 h-7 flex items-center justify-center rounded-full bg-tg-bg hover:opacity-85 active:scale-95 transition-all text-tg-hint hover:text-tg-text border-0 cursor-pointer"
               title="Close Portal"
             >
               <X className="w-3.5 h-3.5" />
@@ -419,7 +419,7 @@ export function InternalSecurityDesk({ onClose }: InternalSecurityDeskProps) {
           )}
           <div className="flex items-center space-x-2 mr-1">
             <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
-            <span className="text-xs font-bold text-white tracking-wide">System Security Desk</span>
+            <span className="text-xs font-bold text-tg-text tracking-wide">System Security Desk</span>
           </div>
         </div>
 
@@ -427,23 +427,23 @@ export function InternalSecurityDesk({ onClose }: InternalSecurityDeskProps) {
         <div className="flex items-center space-x-2 space-x-reverse">
           <button
             onClick={() => refreshSettings()}
-            className="w-7 h-7 flex items-center justify-center rounded-full bg-white/[0.08] hover:bg-white/[0.15] text-white/60 hover:text-white active:scale-95 transition-all"
+            className="w-7 h-7 flex items-center justify-center rounded-full bg-tg-bg hover:opacity-85 text-tg-hint hover:text-tg-text active:scale-95 transition-all border-0 cursor-pointer"
             title="Refresh data"
           >
-            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-[#007AFF]' : ''}`} />
+            <RefreshCw className={`w-3.5 h-3.5 ${isLoading ? 'animate-spin text-tg-link' : ''}`} />
           </button>
-          <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-white/[0.06] border border-white/[0.06] text-[11px] text-white/70">
-            <Shield className="w-3 h-3 text-[#007AFF]" />
+          <div className="hidden sm:flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-tg-bg border border-tg-separator text-[11px] text-tg-hint">
+            <Shield className="w-3 h-3 text-tg-link" />
             <span>{user?.telegramUsername ? `@${user.telegramUsername}` : 'Admin'}</span>
           </div>
         </div>
       </div>
 
       {/* ========================================================================= */}
-      {/* macOS SEGMENTED CONTROL TABS                                              */}
+      {/* SEGMENTED CONTROL TABS                                                    */}
       {/* ========================================================================= */}
-      <div className="px-3 py-2 bg-[#141418] border-b border-white/[0.06] overflow-x-auto no-scrollbar shrink-0">
-        <div className="flex items-center space-x-1 p-1 bg-black/40 rounded-xl border border-white/[0.05] min-w-max">
+      <div className="px-3 py-2 bg-tg-secondary border-b border-tg-separator overflow-x-auto no-scrollbar shrink-0">
+        <div className="flex items-center space-x-1 p-1 bg-tg-bg rounded-xl border border-tg-separator min-w-max">
           {[
             { id: 'dashboard', label: 'Dashboard', icon: <Zap className="w-3.5 h-3.5" /> },
             { 

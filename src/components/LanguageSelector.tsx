@@ -113,18 +113,18 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                 closeModal();
               }
             }}
-            className="relative w-full max-w-md bg-[#1C1C1E] sm:rounded-[28px] rounded-t-[28px] z-10 max-h-[85vh] flex flex-col overflow-hidden text-white font-sans border-0 select-none touch-pan-y"
+            className="relative w-full max-w-md bg-tg-secondary sm:rounded-[28px] rounded-t-[28px] z-10 max-h-[85vh] flex flex-col overflow-hidden text-tg-text font-sans border-t border-tg-separator sm:border select-none touch-pan-y"
           >
             {/* Top Sheet Drag Handle (Mobile) */}
-            <div className="w-10 h-1 bg-white/20 rounded-full mx-auto mt-2.5 mb-1 sm:hidden shrink-0" />
+            <div className="w-10 h-1 bg-tg-hint/30 rounded-full mx-auto mt-2.5 mb-1 sm:hidden shrink-0" />
 
             {/* Modal Header Bar */}
-            <div className="px-4 py-3 flex items-center justify-between shrink-0 border-b border-white/[0.06]">
+            <div className="px-4 py-3 flex items-center justify-between shrink-0 border-b border-tg-separator">
               <div className="flex items-center space-x-2">
-                <div className="w-7 h-7 rounded-full bg-[#32ADE6] flex items-center justify-center text-white">
+                <div className="w-7 h-7 rounded-full bg-tg-button flex items-center justify-center text-white">
                   <FaLanguageIcon className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-[15px] font-bold text-white">
+                <span className="text-[15px] font-bold text-tg-text">
                   {t('profile.selectLanguage', 'Select Language')}
                 </span>
               </div>
@@ -132,7 +132,7 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
               <button
                 type="button"
                 onClick={closeModal}
-                className="w-7 h-7 rounded-full bg-[#2C2C2E] flex items-center justify-center text-[#8E8E93] hover:text-white active:scale-95 transition-all cursor-pointer border-0"
+                className="w-7 h-7 rounded-full bg-tg-bg flex items-center justify-center text-tg-hint hover:text-tg-text active:scale-95 transition-all cursor-pointer border-0"
               >
                 <X className="w-4 h-4" />
               </button>
@@ -147,25 +147,25 @@ export const LanguageSelector: React.FC<LanguageSelectorProps> = ({
                     key={lang.code}
                     type="button"
                     onClick={() => handleSelectLanguage(lang.code)}
-                    className={`w-full flex items-center justify-between p-3.5 rounded-[20px] transition-colors cursor-pointer border-0 ${
+                    className={`w-full flex items-center justify-between p-3.5 rounded-[20px] transition-colors cursor-pointer border ${
                       isSelected
-                        ? 'bg-[#2C2C2E] text-[#007AFF]'
-                        : 'bg-[#242426] text-white hover:bg-[#2C2C2E]'
+                        ? 'bg-tg-bg border-tg-link text-tg-link ring-1 ring-[var(--tg-link-color)]'
+                        : 'bg-tg-bg border-tg-separator text-tg-text hover:bg-tg-secondary'
                     }`}
                   >
                     <div className="flex items-center space-x-3.5">
                       <LanguageFlagIcon code={lang.code} className="w-7 h-7 shrink-0 shadow-sm" />
                       <div className="text-left rtl:text-right">
-                        <span className={`text-[14.5px] block leading-tight ${isSelected ? 'font-bold text-[#007AFF]' : 'font-semibold text-white'}`}>
+                        <span className={`text-[14.5px] block leading-tight ${isSelected ? 'font-bold text-tg-link' : 'font-semibold text-tg-text'}`}>
                           {lang.nativeName}
                         </span>
-                        <span className="text-[11px] text-[#8E8E93] font-medium block mt-0.5">
+                        <span className="text-[11px] text-tg-hint font-medium block mt-0.5">
                           {lang.name}
                         </span>
                       </div>
                     </div>
                     {isSelected && (
-                      <div className="w-6 h-6 rounded-full bg-[#007AFF] flex items-center justify-center text-white shrink-0">
+                      <div className="w-6 h-6 rounded-full bg-tg-button flex items-center justify-center text-white shrink-0">
                         <Check className="w-3.5 h-3.5 stroke-[2.5]" />
                       </div>
                     )}

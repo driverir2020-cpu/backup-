@@ -68,10 +68,9 @@ const Quote: React.FC<{
   children: React.ReactNode;
 }> = ({ color, className = "", children }) => (
   <div
-    className={`relative rounded-[10px] border-l-[3.5px] py-2.5 pl-3 pr-8 text-[13px] sm:text-[13.5px] font-light leading-relaxed text-[#D6D6DC] ${className}`}
+    className={`relative rounded-[14px] border-l-[3.5px] py-2.5 pl-3 pr-8 text-[13px] sm:text-[13.5px] leading-relaxed text-tg-text bg-tg-secondary border border-tg-separator shadow-sm ${className}`}
     style={{
       borderLeftColor: color,
-      background: `linear-gradient(${color}18, ${color}18), ${CARD}`,
     }}
   >
     <QuoteMark color={color} />
@@ -85,18 +84,18 @@ const Item: React.FC<{
   children: React.ReactNode;
 }> = ({ icon, title, children }) => (
   <div className="[&+&]:mt-3">
-    <h3 className="mb-0.5 flex items-center gap-1.5 text-[14px] sm:text-[14.5px] font-medium text-white tracking-tight">
+    <h3 className="mb-0.5 flex items-center gap-1.5 text-[14px] sm:text-[14.5px] font-medium text-tg-text tracking-tight">
       {icon}
       <span>{title}</span>
     </h3>
-    <div className="text-[12.5px] sm:text-[13px] leading-relaxed text-[#CBCBD2]">
+    <div className="text-[12.5px] sm:text-[13px] leading-relaxed text-tg-hint">
       {children}
     </div>
   </div>
 );
 
 const B: React.FC<{ children: React.ReactNode }> = ({ children }) => (
-  <b className="font-semibold text-white">{children}</b>
+  <b className="font-semibold text-tg-text">{children}</b>
 );
 
 const iconProps = { size: 16, strokeWidth: 1.8 } as const;
@@ -499,16 +498,16 @@ export function Loans() {
   };
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white pb-36 pt-2 select-none font-sans relative" dir="ltr">
+    <div className="min-h-screen bg-tg-bg text-tg-text pb-36 pt-2 select-none font-sans relative" dir="ltr">
       
-      {/* iOS Floating Pill Toast Notification (No neon, simple & smooth) */}
+      {/* Toast Notification */}
       {toastMessage && (
         <div className={`fixed top-4 left-0 right-0 px-4 z-50 flex justify-center pointer-events-none transition-all duration-300 ease-out ${
           isToastExiting ? '-translate-y-3 opacity-0 scale-95' : 'translate-y-0 opacity-100 scale-100'
         }`}>
-          <div className="bg-[#1C1C1E]/95 backdrop-blur-2xl border border-white/[0.08] shadow-[0_6px_24px_rgba(0,0,0,0.5)] py-2 px-3.5 rounded-full flex items-center gap-2 pointer-events-auto select-none">
+          <div className="bg-tg-secondary border border-tg-separator shadow-lg py-2 px-3.5 rounded-full flex items-center gap-2 pointer-events-auto select-none">
             <AlertCircle className="w-3.5 h-3.5 text-rose-400 shrink-0" />
-            <span className="text-[12px] font-medium text-white/95 leading-none">
+            <span className="text-[12px] font-medium text-tg-text leading-none">
               {toastMessage}
             </span>
           </div>
@@ -518,9 +517,9 @@ export function Loans() {
       <div className="max-w-md mx-auto px-4 space-y-4">
 
         {/* =========================================================================
-            TOP SEGMENTED SWITCHER (Minimalist Borderless Pill)
+            TOP SEGMENTED SWITCHER (Telegram UI Pill)
             ========================================================================= */}
-        <div className="flex items-center justify-center p-1 bg-[#1C1C1E] rounded-2xl border-0">
+        <div className="flex items-center justify-center p-1 bg-tg-secondary border border-tg-separator rounded-2xl">
           <button
             type="button"
             onClick={() => {
@@ -529,8 +528,8 @@ export function Loans() {
             }}
             className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border-0 ${
               currentStep === 'overview'
-                ? 'bg-[#2C2C2E] text-[#2EA5FF]'
-                : 'text-[#8E8E93] hover:text-white'
+                ? 'bg-tg-bg text-tg-link shadow-sm'
+                : 'text-tg-hint hover:text-tg-text'
             }`}
           >
             <BookOpen className="w-3.5 h-3.5" />
@@ -545,8 +544,8 @@ export function Loans() {
             }}
             className={`flex-1 py-2 rounded-xl text-xs font-bold transition-all flex items-center justify-center space-x-1.5 cursor-pointer border-0 ${
               currentStep === 'verification'
-                ? 'bg-[#2C2C2E] text-[#2EA5FF]'
-                : 'text-[#8E8E93] hover:text-white'
+                ? 'bg-tg-bg text-tg-link shadow-sm'
+                : 'text-tg-hint hover:text-tg-text'
             }`}
           >
             <CreditCard className="w-3.5 h-3.5" />
@@ -555,15 +554,15 @@ export function Loans() {
         </div>
 
         {/* =========================================================================
-            VIEW 1: TELEGRAM-STYLE QUOTE LOAN TERMS (EXACT USER SPECIFICATION)
+            VIEW 1: TELEGRAM-STYLE QUOTE LOAN TERMS
             ========================================================================= */}
         {currentStep === 'overview' && (
           <div className="w-full pb-2 font-light animate-in fade-in duration-200" dir="ltr">
             <header className="mx-1 mb-3">
-              <h1 className="text-[18px] sm:text-[19px] font-medium tracking-[0.2px] text-white">
+              <h1 className="text-[18px] sm:text-[19px] font-medium tracking-[0.2px] text-tg-text">
                 TonFlame Liquidity Facility
               </h1>
-              <p className="mt-0.5 text-xs text-[#8e8e93]">Terms &amp; Conditions</p>
+              <p className="mt-0.5 text-xs text-tg-hint">Terms &amp; Conditions</p>
             </header>
 
             {/* Big quote: terms 1–4 */}
@@ -640,18 +639,18 @@ export function Loans() {
                   triggerHaptic('selection');
                   setTermsAccepted(!termsAccepted);
                 }}
-                className="p-3 rounded-xl bg-[#18191D] hover:bg-[#1E2026] active:scale-[0.99] flex items-center space-x-3 cursor-pointer select-none transition-all border border-white/[0.06]"
+                className="p-3 rounded-xl bg-tg-secondary hover:bg-tg-bg active:scale-[0.99] flex items-center space-x-3 cursor-pointer select-none transition-all border border-tg-separator"
               >
-                {/* Custom Telegram Squircle Checkbox (No browser default) */}
+                {/* Custom Telegram Squircle Checkbox */}
                 <div className={`w-5 h-5 rounded-[6px] flex items-center justify-center transition-all duration-200 shrink-0 ${
                   termsAccepted 
-                    ? 'bg-gradient-to-tr from-[#007AFF] to-[#2EA5FF] text-white shadow-[0_0_10px_rgba(0,122,255,0.45)] scale-100' 
-                    : 'bg-[#24262E] border border-white/20 text-transparent scale-95'
+                    ? 'bg-tg-button text-tg-button-text scale-100' 
+                    : 'bg-tg-bg border border-tg-separator text-transparent scale-95'
                 }`}>
                   <Check className={`w-3.5 h-3.5 stroke-[2.8] transition-transform duration-150 ${termsAccepted ? 'scale-100' : 'scale-0'}`} />
                 </div>
-                <span className="text-[12px] sm:text-[12.5px] text-[#C4C4C8] font-light leading-snug">
-                  I have reviewed and agree to the <b className="text-white font-medium">1.80% facility fee</b> and <b className="text-white font-medium">130% collateral terms</b>.
+                <span className="text-[12px] sm:text-[12.5px] text-tg-hint leading-snug">
+                  I have reviewed and agree to the <b className="text-tg-text font-medium">1.80% facility fee</b> and <b className="text-tg-text font-medium">130% collateral terms</b>.
                 </span>
               </div>
 
@@ -661,7 +660,7 @@ export function Loans() {
                   triggerHaptic('medium');
                   setCurrentStep('verification');
                 }}
-                className="w-full py-3.5 rounded-[16px] bg-gradient-to-r from-[#2EA5FF] to-[#007AFF] text-white font-bold text-sm flex items-center justify-center space-x-2 hover:brightness-105 active:scale-[0.99] transition-all cursor-pointer border-0 shadow-none"
+                className="w-full py-3.5 rounded-[16px] bg-tg-button text-tg-button-text font-bold text-sm flex items-center justify-center space-x-2 hover:opacity-90 active:scale-[0.99] transition-all cursor-pointer border-0 shadow-none"
               >
                 <span>Continue to Credit Facility</span>
                 <ChevronRight className="w-4 h-4" />
@@ -693,48 +692,48 @@ export function Loans() {
                   {/* Glowing Dollar Sign Badge ($) with Click Particle Burst */}
                   <div 
                     onClick={() => triggerDollarBurst(18)}
-                    className={`relative z-10 w-20 h-20 sm:w-22 sm:h-22 rounded-[24px] bg-gradient-to-b from-[#2EA5FF] to-[#007AFF] flex items-center justify-center cursor-pointer transition-transform duration-150 shadow-[0_8px_30px_rgba(0,122,255,0.35)] ${
+                    className={`relative z-10 w-20 h-20 sm:w-22 sm:h-22 rounded-[24px] bg-tg-button text-tg-button-text flex items-center justify-center cursor-pointer transition-transform duration-150 shadow-md ${
                       badgeScale ? 'scale-90' : 'active:scale-95'
                     }`}
                     title="Tap to generate dollars"
                   >
-                    <FaDollarIcon className="w-8 h-8 sm:w-9 sm:h-9 text-white drop-shadow-md select-none" />
+                    <FaDollarIcon className="w-8 h-8 sm:w-9 sm:h-9 text-tg-button-text drop-shadow-md select-none" />
                   </div>
 
                   <div className="relative z-10 text-center mt-2.5">
-                    <h2 className="text-[17px] font-bold text-white tracking-tight">
+                    <h2 className="text-[17px] font-bold text-tg-text tracking-tight">
                       {t('loans.creditLineVerification', 'Credit Line Verification')}
                     </h2>
-                    <p className="text-xs text-[#8E8E93] font-light mt-0.5">
+                    <p className="text-xs text-tg-hint font-light mt-0.5">
                       Tap $ to generate floating dollar particles • Instant 1-click processing
                     </p>
                   </div>
                 </div>
 
-                {/* 2. CONNECTED 3-STEP TIMELINE (BORDERLESS) */}
-                <div className="bg-[#1C1C1E] rounded-[24px] p-5 border-0">
+                {/* 2. CONNECTED 3-STEP TIMELINE */}
+                <div className="bg-tg-secondary border border-tg-separator rounded-[24px] p-5">
                   <div className="relative">
                     
                     {/* Step 1: Telegram Mini App Session */}
                     <div className="relative flex items-start space-x-4 pb-7">
-                      <div className="absolute left-5 top-10 bottom-0 w-[2px] bg-[#2C2C2E] -translate-x-1/2" />
+                      <div className="absolute left-5 top-10 bottom-0 w-[2px] bg-tg-separator -translate-x-1/2" />
                       
-                      <div className="relative z-10 w-10 h-10 rounded-full bg-[#242426] flex items-center justify-center shrink-0 text-[#007AFF] overflow-hidden">
+                      <div className="relative z-10 w-10 h-10 rounded-full bg-tg-bg border border-tg-separator flex items-center justify-center shrink-0 text-tg-link overflow-hidden">
                         {user?.telegramUsername ? (
-                          <span className="font-bold text-sm text-[#007AFF]">
+                          <span className="font-bold text-sm text-tg-link">
                             {user.telegramUsername.substring(0, 2).toUpperCase()}
                           </span>
                         ) : (
-                          <UserIcon className="w-5 h-5 text-[#007AFF]" />
+                          <UserIcon className="w-5 h-5 text-tg-link" />
                         )}
                       </div>
 
                       <div className="pt-2 min-w-0 flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-[14px] font-bold text-white leading-tight">
+                          <h3 className="text-[14px] font-bold text-tg-text leading-tight">
                             {t('loans.telegramAccount', 'Telegram Account')}
                           </h3>
-                          <span className="text-[11px] font-bold text-[#007AFF] bg-[#007AFF]/10 px-2.5 py-0.5 rounded-full flex items-center space-x-1">
+                          <span className="text-[11px] font-bold text-tg-link bg-tg-link/10 px-2.5 py-0.5 rounded-full flex items-center space-x-1">
                             <Check className="w-3 h-3 stroke-[3]" />
                             <span>{t('loans.verified', 'Verified')}</span>
                           </span>
@@ -744,18 +743,18 @@ export function Loans() {
 
                     {/* Step 2: In-App Custodial Wallet Vault */}
                     <div className="relative flex items-start space-x-4 pb-7">
-                      <div className="absolute left-5 top-10 bottom-0 w-[2px] bg-[#2C2C2E] -translate-x-1/2" />
+                      <div className="absolute left-5 top-10 bottom-0 w-[2px] bg-tg-separator -translate-x-1/2" />
 
-                      <div className="relative z-10 w-10 h-10 rounded-full bg-[#242426] flex items-center justify-center shrink-0 text-[#007AFF]">
-                        <FaWalletIcon className="w-4.5 h-4.5 text-[#007AFF]" />
+                      <div className="relative z-10 w-10 h-10 rounded-full bg-tg-bg border border-tg-separator flex items-center justify-center shrink-0 text-tg-link">
+                        <FaWalletIcon className="w-4.5 h-4.5 text-tg-link" />
                       </div>
 
                       <div className="pt-2 min-w-0 flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-[14px] font-bold text-white leading-tight">
+                          <h3 className="text-[14px] font-bold text-tg-text leading-tight">
                             {t('loans.inAppWallet', 'In-App Custodial Wallet')}
                           </h3>
-                          <span className="text-[11px] font-bold text-[#007AFF] bg-[#007AFF]/10 px-2.5 py-0.5 rounded-full flex items-center space-x-1">
+                          <span className="text-[11px] font-bold text-tg-link bg-tg-link/10 px-2.5 py-0.5 rounded-full flex items-center space-x-1">
                             <Check className="w-3 h-3 stroke-[3]" />
                             <span>{t('loans.active', 'Active')}</span>
                           </span>
@@ -763,18 +762,18 @@ export function Loans() {
                       </div>
                     </div>
 
-                    {/* Step 3: Phone Number Verification (Dimmed if not verified) */}
-                    <div className="relative flex items-start space-x-4 opacity-40">
-                      <div className="relative z-10 w-10 h-10 rounded-full bg-[#242426] text-[#8E8E93] flex items-center justify-center shrink-0">
+                    {/* Step 3: Phone Number Verification */}
+                    <div className="relative flex items-start space-x-4 opacity-50">
+                      <div className="relative z-10 w-10 h-10 rounded-full bg-tg-bg border border-tg-separator text-tg-hint flex items-center justify-center shrink-0">
                         <Phone className="w-4.5 h-4.5" />
                       </div>
 
                       <div className="pt-2 min-w-0 flex-1">
                         <div className="flex items-center justify-between">
-                          <h3 className="text-[14px] font-bold leading-tight text-[#8E8E93]">
+                          <h3 className="text-[14px] font-bold leading-tight text-tg-hint">
                             {t('loans.phoneVerification', 'Phone Verification')}
                           </h3>
-                          <span className="text-[11px] font-medium text-[#8E8E93] bg-white/[0.04] px-2 py-0.5 rounded-full">
+                          <span className="text-[11px] font-medium text-tg-hint bg-tg-bg px-2 py-0.5 rounded-full border border-tg-separator">
                             {t('loans.required', 'Required')}
                           </span>
                         </div>
@@ -789,7 +788,7 @@ export function Loans() {
                   type="button"
                   onClick={handleVerifyClick}
                   disabled={isVerifying}
-                  className="w-full py-4 rounded-[18px] bg-gradient-to-r from-[#2EA5FF] to-[#007AFF] text-white font-bold text-sm flex items-center justify-center space-x-2 hover:brightness-105 active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50 border-0 shadow-none"
+                  className="w-full py-4 rounded-[18px] bg-tg-button text-tg-button-text font-bold text-sm flex items-center justify-center space-x-2 hover:opacity-90 active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50 border-0 shadow-none"
                 >
                   <Phone className="w-4 h-4" />
                   <span>
@@ -798,11 +797,11 @@ export function Loans() {
                 </button>
               </div>
             ) : (
-              /* STAGE B: PHONE VERIFIED -> VERIFICATION BOX DISAPPEARS & MINIMALIST LOAN DESK TAKES CENTER STAGE */
+              /* STAGE B: PHONE VERIFIED */
               <div className="space-y-4 animate-in fade-in zoom-in-95 duration-250">
                 
                 {/* Verified Header Status Banner */}
-                <div className="w-full py-2.5 px-4 rounded-xl bg-[#1C1C1E] border-0 text-emerald-400 text-xs font-bold flex items-center justify-between">
+                <div className="w-full py-2.5 px-4 rounded-xl bg-tg-secondary border border-tg-separator text-emerald-400 text-xs font-bold flex items-center justify-between">
                   <div className="flex items-center space-x-2">
                     <ShieldCheck className="w-4.5 h-4.5 text-emerald-400" />
                     <span>{t('loans.accountVerifiedReady', 'Instant Credit Facility • Active & Ready')}</span>
@@ -810,26 +809,26 @@ export function Loans() {
                   <button
                     type="button"
                     onClick={handleResetVerificationForDev}
-                    className="text-[10px] text-[#8E8E93] hover:text-white underline cursor-pointer"
+                    className="text-[10px] text-tg-hint hover:text-tg-text underline cursor-pointer"
                     title="Reset verification for testing"
                   >
                     Reset Test
                   </button>
                 </div>
 
-                {/* Minimalist Loan Desk Card with Seamless Borderless Telegram-UI Input */}
-                <div className="bg-[#1C1C1E] rounded-[24px] p-5 border-0 space-y-4 text-left">
-                  <div className="flex justify-between items-center text-xs text-[#8E8E93]">
-                    <span className="font-mono uppercase font-bold text-[11px] tracking-wider text-[#8E8E93]">
+                {/* Minimalist Loan Desk Card */}
+                <div className="bg-tg-secondary border border-tg-separator rounded-[24px] p-5 space-y-4 text-left">
+                  <div className="flex justify-between items-center text-xs text-tg-hint">
+                    <span className="font-mono uppercase font-bold text-[11px] tracking-wider text-tg-hint">
                       {t('loans.loanRequestAmount', 'Loan Request Amount')}
                     </span>
-                    <span className="text-[#007AFF] font-bold font-mono tabular-nums">
+                    <span className="text-tg-link font-bold font-mono tabular-nums">
                       {loanFeePercent}% Fixed Fee
                     </span>
                   </div>
 
                   {/* Official @telegram-apps/telegram-ui Input */}
-                  <div className="rounded-2xl overflow-hidden bg-[#242426]">
+                  <div className="rounded-2xl overflow-hidden bg-tg-bg border border-tg-separator">
                     <Input
                       type="number"
                       placeholder="0.00"
@@ -839,11 +838,11 @@ export function Loans() {
                         setLoanAmount(isNaN(val) ? 0 : Math.max(0, val));
                       }}
                       after={
-                        <div className="flex items-center space-x-1.5 pr-3 text-white font-mono font-bold text-sm">
-                          <span className="text-[#007AFF] font-bold">USDT</span>
+                        <div className="flex items-center space-x-1.5 pr-3 text-tg-text font-mono font-bold text-sm">
+                          <span className="text-tg-link font-bold">USDT</span>
                         </div>
                       }
-                      className="border-0 bg-transparent text-white font-mono font-bold text-xl"
+                      className="border-0 bg-transparent text-tg-text font-mono font-bold text-xl"
                     />
                   </div>
 
@@ -857,10 +856,10 @@ export function Loans() {
                           triggerHaptic('selection');
                           setLoanAmount(amt);
                         }}
-                        className={`py-2.5 rounded-xl text-xs font-mono tabular-nums font-bold transition-all cursor-pointer border-0 ${
+                        className={`py-2.5 rounded-xl text-xs font-mono tabular-nums font-bold transition-all cursor-pointer border ${
                           loanAmount === amt
-                            ? 'bg-[#007AFF] text-white shadow-[0_4px_16px_rgba(0,122,255,0.35)]'
-                            : 'bg-[#242426] text-[#8E8E93] hover:text-white'
+                            ? 'bg-tg-button text-tg-button-text border-transparent shadow-sm'
+                            : 'bg-tg-bg text-tg-hint border-tg-separator hover:text-tg-text'
                         }`}
                       >
                         ${amt}
@@ -868,21 +867,21 @@ export function Loans() {
                     ))}
                   </div>
 
-                  {/* 130% Minimalist Compact Calculation Matrix */}
-                  <div className="bg-[#242426] rounded-2xl p-3.5 space-y-2 text-xs font-mono tabular-nums">
-                    <div className="flex justify-between items-center text-[#8E8E93]">
+                  {/* 130% Matrix */}
+                  <div className="bg-tg-bg border border-tg-separator rounded-2xl p-3.5 space-y-2 text-xs font-mono tabular-nums">
+                    <div className="flex justify-between items-center text-tg-hint">
                       <span>Loan Liquidity:</span>
-                      <span className="text-white font-extrabold">${loanAmount}.00 USDT</span>
+                      <span className="text-tg-text font-extrabold">${loanAmount}.00 USDT</span>
                     </div>
-                    <div className="flex justify-between items-center text-[#8E8E93]">
+                    <div className="flex justify-between items-center text-tg-hint">
                       <span>Facility Fee ({loanFeePercent}%):</span>
-                      <span className="text-[#007AFF] font-bold">${calculatedFee} USD</span>
+                      <span className="text-tg-link font-bold">${calculatedFee} USD</span>
                     </div>
-                    <div className="flex justify-between items-center pt-2 border-t border-white/[0.04]">
-                      <span className="text-[#8E8E93] font-medium">{t('loans.collateralRequired', 'Required Collateral (130%):')}</span>
+                    <div className="flex justify-between items-center pt-2 border-t border-tg-separator">
+                      <span className="text-tg-hint font-medium">{t('loans.collateralRequired', 'Required Collateral (130%):')}</span>
                       <span className="text-emerald-400 font-extrabold text-sm">${collateralRequired}.00 USDT</span>
                     </div>
-                    <div className="flex justify-between items-center text-[11px] text-[#8E8E93]">
+                    <div className="flex justify-between items-center text-[11px] text-tg-hint">
                       <span>Your Balance:</span>
                       <span className={hasEnoughCollateral ? "text-emerald-400 font-bold" : "text-amber-400 font-bold"}>
                         ${userBalance.toFixed(2)} USDT {hasEnoughCollateral ? '(Sufficient)' : '(Deposit needed)'}
@@ -890,13 +889,13 @@ export function Loans() {
                     </div>
                   </div>
 
-                  {/* Dynamic CTA: Instant Borrow if user has collateral, or Deposit Collateral */}
+                  {/* Dynamic CTA */}
                   {hasEnoughCollateral ? (
                     <button
                       type="button"
                       disabled={loanAmount <= 0 || isBorrowing}
                       onClick={handleApplyLoan}
-                      className="w-full py-4 rounded-[18px] bg-gradient-to-r from-emerald-500 to-teal-600 text-white font-bold text-sm flex items-center justify-center space-x-2 hover:brightness-105 active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50 border-0 shadow-lg shadow-emerald-950/30"
+                      className="w-full py-4 rounded-[18px] bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-sm flex items-center justify-center space-x-2 transition-all cursor-pointer disabled:opacity-50 border-0 shadow-sm"
                     >
                       {isBorrowing ? (
                         <RefreshCw className="w-4 h-4 text-white animate-spin" />
@@ -914,9 +913,9 @@ export function Loans() {
                       type="button"
                       disabled={loanAmount <= 0}
                       onClick={() => navigate(`/deposit?amount=${collateralRequired}&title=Loan%20Collateral`)}
-                      className="w-full py-4 rounded-[18px] bg-gradient-to-r from-[#2EA5FF] to-[#007AFF] text-white font-bold text-sm flex items-center justify-center space-x-2 hover:brightness-105 active:scale-[0.99] transition-all cursor-pointer disabled:opacity-50 border-0 shadow-none"
+                      className="w-full py-4 rounded-[18px] bg-tg-button hover:opacity-90 text-tg-button-text font-bold text-sm flex items-center justify-center space-x-2 transition-all cursor-pointer disabled:opacity-50 border-0 shadow-none"
                     >
-                      <FaWalletIcon className="w-4 h-4 text-white" />
+                      <FaWalletIcon className="w-4 h-4 text-tg-button-text" />
                       <span>
                         {loanAmount > 0 
                           ? `Deposit $${collateralRequired} Collateral & Get $${loanAmount}` 
@@ -929,13 +928,13 @@ export function Loans() {
               </div>
             )}
 
-            {/* 3. ACTIVE LOANS SECTION (BORDERLESS) */}
+            {/* 3. ACTIVE LOANS SECTION */}
             {activeLoans.length > 0 && (
-              <div className="bg-[#1C1C1E] rounded-[24px] p-4.5 border-0 space-y-3">
-                <h3 className="text-xs font-bold text-[#8E8E93] uppercase tracking-wider font-mono">
+              <div className="bg-tg-secondary border border-tg-separator rounded-[24px] p-4.5 space-y-3">
+                <h3 className="text-xs font-bold text-tg-hint uppercase tracking-wider font-mono">
                   {t('loans.activeLoans', 'Active Loans')}
                 </h3>
-                <div className="divide-y divide-white/[0.04]">
+                <div className="divide-y divide-tg-separator">
                   {activeLoans.map((loan) => (
                     <div 
                       key={loan.id} 
@@ -943,14 +942,14 @@ export function Loans() {
                     >
                       <div>
                         <div className="flex items-center space-x-2">
-                          <span className="font-extrabold text-white">${loan.borrowAmount.toFixed(2)} USDT</span>
+                          <span className="font-extrabold text-tg-text">${loan.borrowAmount.toFixed(2)} USDT</span>
                           <span className={`text-[10px] px-2 py-0.5 rounded-full font-bold ${
-                            loan.status === 'active' ? 'bg-[#007AFF]/15 text-[#007AFF]' : 'bg-emerald-500/15 text-emerald-400'
+                            loan.status === 'active' ? 'bg-tg-link/15 text-tg-link' : 'bg-emerald-500/15 text-emerald-400'
                           }`}>
                             {loan.status === 'active' ? t('loans.active', 'Active') : t('loans.repaid', 'Repaid')}
                           </span>
                         </div>
-                        <p className="text-[11px] text-[#8E8E93] mt-0.5">
+                        <p className="text-[11px] text-tg-hint mt-0.5">
                           Collateral: ${loan.collateralAmount.toFixed(2)} USD • Tx: {loan.txid || 'TONFLAME-LN'}
                         </p>
                       </div>
@@ -971,7 +970,7 @@ export function Loans() {
                             <span>Repay</span>
                           </button>
                         ) : (
-                          <span className="text-[11px] text-[#8E8E93]">
+                          <span className="text-[11px] text-tg-hint">
                             Settled
                           </span>
                         )}
@@ -983,22 +982,22 @@ export function Loans() {
             )}
 
             {/* 4. 4K LIVE LOAN SETTLEMENT CERTIFICATE INSPECTOR (FOR DEV / TESTING) */}
-            <div className="bg-[#1C1C1E] rounded-[24px] p-4.5 border border-cyan-500/20 space-y-3">
+            <div className="bg-tg-secondary rounded-[24px] p-4.5 border border-tg-separator space-y-3">
               <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2.5">
                 <div className="flex items-center space-x-2.5">
-                  <div className="w-8 h-8 rounded-xl bg-cyan-500/15 flex items-center justify-center text-cyan-400 shrink-0">
+                  <div className="w-8 h-8 rounded-xl bg-tg-link/15 flex items-center justify-center text-tg-link shrink-0">
                     <Radio className="w-4 h-4 animate-pulse" />
                   </div>
                   <div>
-                    <h4 className="text-xs font-bold text-white">🖼️ نمونه سند واریزی ۴K کانال (تست کیفیت)</h4>
-                    <p className="text-[10.5px] text-[#8E8E93]">سند واریزی رندر شده توسط موتور Node.js جهت ارسال به کانال</p>
+                    <h4 className="text-xs font-bold text-tg-text">🖼️ نمونه سند واریزی ۴K کانال (تست کیفیت)</h4>
+                    <p className="text-[10.5px] text-tg-hint">سند واریزی رندر شده توسط موتور Node.js جهت ارسال به کانال</p>
                   </div>
                 </div>
 
                 <button
                   type="button"
                   onClick={() => setIsPreviewModalOpen(true)}
-                  className="px-3.5 py-1.5 bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-400 hover:to-blue-500 text-white text-xs font-bold rounded-xl flex items-center space-x-1.5 transition-all active:scale-95 shadow-md shadow-cyan-950/20"
+                  className="px-3.5 py-1.5 bg-tg-button hover:opacity-90 text-tg-button-text text-xs font-bold rounded-xl flex items-center space-x-1.5 transition-all active:scale-95 shadow-sm"
                 >
                   <Eye className="w-3.5 h-3.5" />
                   <span>مشاهده نمونه ۴K</span>
@@ -1013,30 +1012,30 @@ export function Loans() {
 
       {/* 4K FULLSCREEN LOAN CERTIFICATE PREVIEW MODAL */}
       {isPreviewModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/85 backdrop-blur-md animate-in fade-in duration-200">
-          <div className="bg-[#14151A] rounded-[28px] p-5 w-full max-w-2xl border border-cyan-500/30 shadow-2xl relative space-y-4">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-4 bg-black/60 backdrop-blur-sm animate-in fade-in duration-200 font-sans">
+          <div className="bg-tg-secondary rounded-[28px] p-5 w-full max-w-2xl border border-tg-separator shadow-2xl relative space-y-4 text-tg-text">
             {/* Header */}
             <div className="flex items-center justify-between">
               <div className="flex items-center space-x-2.5">
-                <div className="w-8 h-8 rounded-xl bg-cyan-500/15 flex items-center justify-center text-cyan-400">
+                <div className="w-8 h-8 rounded-xl bg-tg-link/15 flex items-center justify-center text-tg-link">
                   <Radio className="w-4 h-4" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white">سند واریزی وام کریپتو (4K Vector Receipt)</h3>
-                  <p className="text-[11px] text-cyan-400 font-mono">TONFLAME LENDING PROTOCOL • LIVE ON-CHAIN SETTLEMENT</p>
+                  <h3 className="text-sm font-bold text-tg-text">سند واریزی وام کریپتو (4K Vector Receipt)</h3>
+                  <p className="text-[11px] text-tg-link font-mono">TONFLAME LENDING PROTOCOL • LIVE ON-CHAIN SETTLEMENT</p>
                 </div>
               </div>
 
               <button
                 onClick={() => setIsPreviewModalOpen(false)}
-                className="w-8 h-8 rounded-full bg-white/10 hover:bg-white/20 text-white flex items-center justify-center transition-colors"
+                className="w-8 h-8 rounded-full bg-tg-bg border border-tg-separator text-tg-hint hover:text-tg-text flex items-center justify-center transition-colors"
               >
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* High-Res Image Container */}
-            <div className="rounded-2xl overflow-hidden bg-black/90 border border-white/10 p-2 flex items-center justify-center shadow-inner">
+            <div className="rounded-2xl overflow-hidden bg-tg-bg border border-tg-separator p-2 flex items-center justify-center shadow-inner">
               <img
                 src={`/api/channel/preview-receipt?t=${previewImageKey}`}
                 alt="4K Loan Disbursement Certificate"
@@ -1045,16 +1044,16 @@ export function Loans() {
             </div>
 
             {/* Modal Controls */}
-            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-white/10 text-xs">
-              <span className="text-[11px] text-white/50 text-center sm:text-left">
-                تولیدشده توسط کتابخانه Sharp در Node.js با رزولوشن بالا و آماده درج خودکار در کانال.
+            <div className="flex flex-col sm:flex-row items-center justify-between gap-3 pt-2 border-t border-tg-separator text-xs">
+              <span className="text-[11px] text-tg-hint text-center sm:text-left">
+                تولیدشده توسط موتور Node.js با رزولوشن بالا و آماده درج خودکار در کانال.
               </span>
 
               <div className="flex items-center space-x-2 w-full sm:w-auto">
                 <button
                   type="button"
                   onClick={() => setPreviewImageKey(Date.now())}
-                  className="flex-1 sm:flex-none px-3.5 py-2 bg-white/10 hover:bg-white/15 text-white font-bold rounded-xl flex items-center justify-center space-x-1.5 transition-all active:scale-95"
+                  className="flex-1 sm:flex-none px-3.5 py-2 bg-tg-bg border border-tg-separator hover:bg-tg-bg/80 text-tg-text font-bold rounded-xl flex items-center justify-center space-x-1.5 transition-all active:scale-95"
                 >
                   <RefreshCw className="w-3.5 h-3.5" />
                   <span>سند تصادفی جدید</span>
@@ -1063,7 +1062,7 @@ export function Loans() {
                 <button
                   type="button"
                   onClick={() => setIsPreviewModalOpen(false)}
-                  className="flex-1 sm:flex-none px-4 py-2 bg-cyan-500 hover:bg-cyan-400 text-black font-bold rounded-xl transition-all active:scale-95"
+                  className="flex-1 sm:flex-none px-4 py-2 bg-tg-button hover:opacity-90 text-tg-button-text font-bold rounded-xl transition-all active:scale-95"
                 >
                   بستن
                 </button>

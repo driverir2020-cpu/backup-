@@ -114,7 +114,7 @@ const CoinRow: React.FC<CoinRowProps> = ({
   return (
     <div
       key={coin.id}
-      className="relative flex items-center justify-between px-4 py-3.5 hover:bg-white/[0.02] active:bg-white/[0.05] transition-colors select-none group cursor-pointer outline-none ring-0 border-0"
+      className="relative flex items-center justify-between px-4 py-3.5 hover:bg-tg-bg/40 active:bg-tg-bg/70 transition-colors select-none group cursor-pointer outline-none ring-0 border-0"
       onClick={onSelect}
     >
       {/* Left: Coin Icon & Name/Network */}
@@ -124,16 +124,16 @@ const CoinRow: React.FC<CoinRowProps> = ({
         </div>
         <div className="min-w-0 flex flex-col justify-center">
           <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
-            <span className="text-[15px] font-bold text-white tracking-tight leading-snug truncate max-w-[130px] sm:max-w-[180px]">
+            <span className="text-[15px] font-bold text-tg-text tracking-tight leading-snug truncate max-w-[130px] sm:max-w-[180px]">
               {coin.name}
             </span>
             {/* Official Telegram Verified Blue Tick Badge */}
             <VerifiedBadge className="w-3.5 h-3.5" />
-            <span className="text-[11.5px] font-semibold text-[#8295A8] tracking-tight">
+            <span className="text-[11.5px] font-semibold text-tg-hint tracking-tight">
               {coin.symbol}
             </span>
             {coin.subBadge && (
-              <span className="px-1.5 py-0.5 bg-[#2C2C2E] text-[#8295A8] text-[10px] font-semibold rounded-md leading-none">
+              <span className="px-1.5 py-0.5 bg-tg-bg text-tg-hint border border-tg-separator text-[10px] font-semibold rounded-md leading-none">
                 {coin.subBadge}
               </span>
             )}
@@ -144,16 +144,16 @@ const CoinRow: React.FC<CoinRowProps> = ({
               </span>
             )}
             {coin.tag && (
-              <span className="px-1.5 py-0.5 bg-[#0D382A] text-[#10B981] text-[10px] font-bold rounded-md leading-none">
+              <span className="px-1.5 py-0.5 bg-emerald-950/40 text-emerald-400 text-[10px] font-bold rounded-md leading-none">
                 {coin.tag}
               </span>
             )}
           </div>
           <div className="flex items-center space-x-1.5 rtl:space-x-reverse mt-0.5">
-            <span className="text-[12.5px] text-[#8295A8] font-medium leading-none">
+            <span className="text-[12.5px] text-tg-hint font-medium leading-none">
               ${rate >= 1 ? (rate === 1 ? '1' : rate < 10 ? rate.toFixed(2) : rate.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 2 })) : rate.toFixed(4)}
             </span>
-            <span className={`text-[12px] font-semibold leading-none ${isPos ? 'text-emerald-400' : pct === '0.00%' ? 'text-[#8295A8]' : 'text-rose-400'}`}>
+            <span className={`text-[12px] font-semibold leading-none ${isPos ? 'text-emerald-400' : pct === '0.00%' ? 'text-tg-hint' : 'text-rose-400'}`}>
               {pct}
             </span>
           </div>
@@ -165,10 +165,10 @@ const CoinRow: React.FC<CoinRowProps> = ({
         <div className={`flex flex-col items-end justify-center transition-all duration-300 ${
           showBalance ? 'blur-0 opacity-100' : 'blur-[7px] opacity-35 select-none pointer-events-none'
         }`}>
-          <span className="text-[15px] font-bold text-white tracking-tight leading-snug">
+          <span className="text-[15px] font-bold text-tg-text tracking-tight leading-snug">
             ${usdVal >= 1000 ? usdVal.toLocaleString(undefined, { maximumFractionDigits: 0 }) : usdVal.toFixed(usdVal < 1 ? 2 : 2)}
           </span>
-          <span className="text-[12.5px] text-[#8295A8] font-semibold leading-tight mt-0.5">
+          <span className="text-[12.5px] text-tg-hint font-semibold leading-tight mt-0.5">
             {amount > 0 ? (amount >= 1000 ? amount.toLocaleString(undefined, { maximumFractionDigits: 0 }) : amount.toFixed(amount < 1 ? 4 : 2)) : '0'}
           </span>
         </div>
@@ -793,7 +793,7 @@ export function Assets() {
   const width = carouselWidth || (typeof window !== 'undefined' ? window.innerWidth : 390);
 
   return (
-    <div className="min-h-screen bg-[#1C1C1E] text-white pb-28 pt-2 select-none">
+    <div className="min-h-screen bg-tg-bg text-tg-text pb-28 pt-2 select-none font-sans">
       {/* Toast Alert */}
       <AnimatePresence>
         {toastMessage && (
@@ -803,8 +803,8 @@ export function Assets() {
             exit={{ opacity: 0, y: -20 }}
             className="fixed top-3 inset-x-4 z-50 flex items-center justify-center pointer-events-none"
           >
-            <div className="bg-[#1C1C1E]/95 backdrop-blur-xl px-4 py-2.5 rounded-2xl text-xs font-semibold text-white flex items-center space-x-2">
-              <CheckCircle2 className="w-4 h-4 text-[#2EA5FF]" />
+            <div className="bg-tg-secondary px-4 py-2.5 rounded-2xl text-xs font-semibold text-tg-text flex items-center space-x-2">
+              <CheckCircle2 className="w-4 h-4 text-tg-link" />
               <span>{toastMessage}</span>
             </div>
           </motion.div>
@@ -826,17 +826,17 @@ export function Assets() {
           title={isPinActive ? 'Wallet Security: Active' : 'Set Wallet Passcode'}
           className={`w-9 h-9 rounded-full flex items-center justify-center transition-all cursor-pointer active:scale-95 border ${
             isPinActive
-              ? 'bg-[#1C1C1E] border-[#2EA5FF]/40 text-[#2EA5FF]'
-              : 'bg-[#1C1C1E] border-[#233242] text-[#8295A8] hover:text-white'
+              ? 'bg-tg-secondary border-tg-link/40 text-tg-link'
+              : 'bg-tg-secondary border-tg-separator text-tg-hint hover:text-tg-text'
           }`}
         >
           {isPinActive ? (
             <div className="relative">
-              <ShieldCheck className="w-4 h-4 text-[#2EA5FF]" />
+              <ShieldCheck className="w-4 h-4 text-tg-link" />
               <span className="absolute -top-1 -right-1 w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
             </div>
           ) : (
-            <Lock className="w-3.5 h-3.5 text-[#8295A8]" />
+            <Lock className="w-3.5 h-3.5 text-tg-hint" />
           )}
         </button>
       </div>
@@ -850,12 +850,12 @@ export function Assets() {
             <div className={`flex items-center justify-center tracking-tight transition-all duration-300 ${
               showBalance ? 'blur-0 opacity-100' : 'blur-[10px] opacity-30 select-none pointer-events-none'
             }`}>
-              <FaDollarIcon className="w-8 h-8 sm:w-10 sm:h-10 text-[#2EA5FF] shrink-0 mr-2 rtl:ml-2 rtl:mr-0 self-center" />
+              <FaDollarIcon className="w-8 h-8 sm:w-10 sm:h-10 text-tg-link shrink-0 mr-2 rtl:ml-2 rtl:mr-0 self-center" />
               <div className="flex items-baseline">
-                <span className="text-[44px] sm:text-[48px] font-bold text-white tracking-tight leading-none">
+                <span className="text-[44px] sm:text-[48px] font-bold text-tg-text tracking-tight leading-none">
                   {balanceInt.toLocaleString()}
                 </span>
-                <span className="text-[28px] sm:text-[32px] font-bold text-white/80 leading-none ml-0.5 rtl:mr-0.5 rtl:ml-0">
+                <span className="text-[28px] sm:text-[32px] font-bold text-tg-hint leading-none ml-0.5 rtl:mr-0.5 rtl:ml-0">
                   .{balanceDec}
                 </span>
               </div>
@@ -865,27 +865,27 @@ export function Assets() {
             <button
               onClick={() => setShowBalance(!showBalance)}
               title={showBalance ? t('assets.hideBalance', 'Hide Balance') : t('assets.showBalance', 'Show Balance')}
-              className="p-1.5 text-[#8295A8] hover:text-[#2EA5FF] active:scale-90 transition-all cursor-pointer shrink-0"
+              className="p-1.5 text-tg-hint hover:text-tg-link active:scale-90 transition-all cursor-pointer shrink-0"
             >
               {showBalance ? (
-                <Eye className="w-5 h-5 text-[#2EA5FF]" />
+                <Eye className="w-5 h-5 text-tg-link" />
               ) : (
                 <EyeOff className="w-5 h-5 text-rose-400" />
               )}
             </button>
           </div>
 
-          {/* 2 Ergonomic Compact Blue Action Buttons (Deposit & Withdraw) - Clean Blue Gradient without Neon */}
+          {/* 2 Ergonomic Compact Action Buttons (Deposit & Withdraw) following Telegram theme */}
           <div className="flex items-center justify-center space-x-20 sm:space-x-24 rtl:space-x-reverse w-full max-w-[320px] mx-auto pt-1 pb-2">
             {/* Deposit Button */}
             <button 
               onClick={() => setIsDepositModalOpen(true)}
               className="flex flex-col items-center justify-center space-y-1.5 cursor-pointer group active:scale-95 transition-transform"
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-b from-[#38B6FF] via-[#2EA5FF] to-[#007AFF] group-hover:brightness-110 active:brightness-95 flex items-center justify-center transition-all">
-                <Plus className="w-5 h-5 text-white" strokeWidth={2.5} />
+              <div className="w-12 h-12 rounded-full bg-tg-button text-tg-button-text shadow-sm group-hover:brightness-110 active:brightness-95 flex items-center justify-center transition-all">
+                <Plus className="w-5 h-5 text-tg-button-text" strokeWidth={2.5} />
               </div>
-              <span className="text-[12.5px] font-bold text-white tracking-wide">{t('assets.deposit', 'Deposit')}</span>
+              <span className="text-[12.5px] font-bold text-tg-text tracking-wide">{t('assets.deposit', 'Deposit')}</span>
             </button>
 
             {/* Withdraw Button */}
@@ -896,10 +896,10 @@ export function Assets() {
               }}
               className="flex flex-col items-center justify-center space-y-1.5 cursor-pointer group active:scale-95 transition-transform"
             >
-              <div className="w-12 h-12 rounded-full bg-gradient-to-b from-[#38B6FF] via-[#2EA5FF] to-[#007AFF] group-hover:brightness-110 active:brightness-95 flex items-center justify-center transition-all">
-                <ArrowUp className="w-5 h-5 text-white" strokeWidth={2.5} />
+              <div className="w-12 h-12 rounded-full bg-tg-button text-tg-button-text shadow-sm group-hover:brightness-110 active:brightness-95 flex items-center justify-center transition-all">
+                <ArrowUp className="w-5 h-5 text-tg-button-text" strokeWidth={2.5} />
               </div>
-              <span className="text-[12.5px] font-bold text-white tracking-wide">{t('assets.withdraw', 'Withdraw')}</span>
+              <span className="text-[12.5px] font-bold text-tg-text tracking-wide">{t('assets.withdraw', 'Withdraw')}</span>
             </button>
           </div>
         </div>
@@ -907,7 +907,7 @@ export function Assets() {
 
       {/* Precision Centered Telegram Native Tab Bar */}
       <div className="flex justify-center items-center px-4 mt-2 mb-3">
-        <div className="flex items-center justify-center space-x-8 rtl:space-x-reverse border-b border-white/[0.06] pb-0">
+        <div className="flex items-center justify-center space-x-8 rtl:space-x-reverse border-b border-tg-separator pb-0">
           {/* Crypto Tab */}
           <button
             onClick={() => {
@@ -915,14 +915,14 @@ export function Assets() {
               setActiveTab('crypto');
             }}
             className={`relative pb-2.5 px-3 text-[14.5px] font-bold transition-colors cursor-pointer select-none ${
-              activeTab === 'crypto' ? 'text-white' : 'text-[#8295A8] hover:text-slate-300'
+              activeTab === 'crypto' ? 'text-tg-text' : 'text-tg-hint hover:text-tg-text'
             }`}
           >
             <span>{t('assets.tabCrypto', 'Crypto')}</span>
             {activeTab === 'crypto' && (
               <motion.div
                 layoutId="walletTabIndicator"
-                className="absolute bottom-0 inset-x-2 h-[2.5px] bg-[#2EA5FF] rounded-full"
+                className="absolute bottom-0 inset-x-2 h-[2.5px] bg-tg-button rounded-full"
                 transition={{ type: 'spring', stiffness: 500, damping: 38 }}
               />
             )}
@@ -935,19 +935,19 @@ export function Assets() {
               setActiveTab('history');
             }}
             className={`relative pb-2.5 px-3 text-[14.5px] font-bold transition-colors cursor-pointer select-none flex items-center space-x-1.5 rtl:space-x-reverse ${
-              activeTab === 'history' ? 'text-white' : 'text-[#8295A8] hover:text-slate-300'
+              activeTab === 'history' ? 'text-tg-text' : 'text-tg-hint hover:text-tg-text'
             }`}
           >
             <span>{t('assets.tabHistory', 'History')}</span>
             {filteredTransactions.length > 0 && (
-              <span className="text-[10px] font-bold text-slate-300 bg-white/[0.12] px-1.5 py-0.5 rounded-full leading-none">
+              <span className="text-[10px] font-bold text-tg-hint bg-tg-secondary border border-tg-separator px-1.5 py-0.5 rounded-full leading-none">
                 {filteredTransactions.length}
               </span>
             )}
             {activeTab === 'history' && (
               <motion.div
                 layoutId="walletTabIndicator"
-                className="absolute bottom-0 inset-x-2 h-[2.5px] bg-[#2EA5FF] rounded-full"
+                className="absolute bottom-0 inset-x-2 h-[2.5px] bg-tg-button rounded-full"
                 transition={{ type: 'spring', stiffness: 500, damping: 38 }}
               />
             )}
@@ -980,9 +980,9 @@ export function Assets() {
         >
           {/* Slide 0: Crypto Assets List */}
           <div className="w-1/2 shrink-0 px-4 mb-5" dir={isRtl ? 'rtl' : 'ltr'}>
-            <div className="bg-[#1C1C1E] rounded-xl overflow-hidden divide-y divide-white/[0.06] shadow-lg w-full">
+            <div className="bg-tg-secondary rounded-2xl overflow-hidden w-full">
               {orderedCoins.length > 0 ? (
-                <div className="divide-y divide-white/[0.06] w-full list-none p-0 m-0">
+                <div className="divide-y divide-tg-separator w-full list-none p-0 m-0">
                   {orderedCoins.map((coin) => {
                     const amount = userCryptoBalances[coin.symbol] || 0;
                     const rate = rates[coin.symbol] || FALLBACK_RATES[coin.symbol] || (coin.symbol === 'USDT' || coin.symbol === 'USDE' ? 1 : 0);
@@ -1011,7 +1011,7 @@ export function Assets() {
                   })}
                 </div>
               ) : (
-                <div className="py-8 text-center text-[#708499] text-xs">
+                <div className="py-8 text-center text-tg-hint text-xs">
                   <Info className="w-6 h-6 mx-auto mb-1.5 opacity-50" />
                   <span>{t('assets.noMatchingCrypto', 'No cryptocurrencies match your search.')}</span>
                 </div>
@@ -1020,15 +1020,15 @@ export function Assets() {
               {/* Starter Bonus Asset item */}
               <div 
                 onClick={() => navigate('/loans')}
-                className="p-3.5 flex items-center justify-between hover:bg-[#242426] active:bg-[#2C2C2E] transition-colors cursor-pointer group"
+                className="p-3.5 flex items-center justify-between hover:bg-tg-bg/40 active:bg-tg-bg/70 transition-colors cursor-pointer group"
               >
                 <div className="flex items-center space-x-3 rtl:space-x-reverse">
-                  <div className="w-9 h-9 rounded-full bg-gradient-to-br from-amber-400/25 to-amber-500/10 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
+                  <div className="w-9 h-9 rounded-full bg-amber-400/20 border border-amber-400/30 flex items-center justify-center text-amber-400 shrink-0">
                     <Gift className="w-4.5 h-4.5" />
                   </div>
                   <div className="text-left rtl:text-right">
                     <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
-                      <span className="text-[15px] font-bold text-white leading-snug">
+                      <span className="text-[15px] font-bold text-tg-text leading-snug">
                         {'Starter Bonus'}
                       </span>
                       <VerifiedBadge className="w-3.5 h-3.5" />
@@ -1036,7 +1036,7 @@ export function Assets() {
                         USDT
                       </span>
                     </div>
-                    <span className="text-[12px] text-[#8295A8] font-medium block mt-0.5 leading-none">
+                    <span className="text-[12px] text-tg-hint font-medium block mt-0.5 leading-none">
                       {'Bot Activation Discount'}
                     </span>
                   </div>
@@ -1053,7 +1053,7 @@ export function Assets() {
             </div>
           </div>
 
-          {/* Slide 1: History Transactions List (Individual Card Design Matching Screenshot) */}
+          {/* Slide 1: History Transactions List */}
           <div className="w-1/2 shrink-0 px-4 mb-5" dir={isRtl ? 'rtl' : 'ltr'}>
             {filteredTransactions.length > 0 ? (
               <div className="space-y-2.5 w-full">
@@ -1103,13 +1103,13 @@ export function Assets() {
                     <div 
                       key={tx.id} 
                       onClick={() => setSelectedTxForDetail(tx)}
-                      className="bg-[#1C1C1E] rounded-[22px] p-3.5 flex items-center justify-between hover:bg-[#242426] active:scale-[0.99] transition-all cursor-pointer group select-none shadow-sm"
+                      className="bg-tg-secondary rounded-[22px] p-3.5 flex items-center justify-between hover:bg-tg-bg/40 active:scale-[0.99] transition-all cursor-pointer group select-none"
                     >
                       {/* Left: Round icon with arrow or gift + title and address */}
                       <div className="flex items-center space-x-3.5 rtl:space-x-reverse min-w-0">
                         {isGift ? (
-                          <div className="w-11 h-11 rounded-full bg-gradient-to-b from-[#38B6FF] to-[#0B5ED7] flex items-center justify-center shrink-0">
-                            <Gift className="w-5 h-5 text-white" strokeWidth={2.2} />
+                          <div className="w-11 h-11 rounded-full bg-tg-button flex items-center justify-center shrink-0">
+                            <Gift className="w-5 h-5 text-tg-button-text" strokeWidth={2.2} />
                           </div>
                         ) : isBonus ? (
                           <div className="w-11 h-11 rounded-full bg-amber-400/15 border border-amber-400/25 flex items-center justify-center shrink-0 text-amber-400">
@@ -1120,25 +1120,25 @@ export function Assets() {
                             <CryptoIcon symbol="STARS" className="w-11 h-11 scale-125 object-contain" />
                           </div>
                         ) : (
-                          <div className="w-11 h-11 rounded-full bg-white/[0.07] flex items-center justify-center shrink-0">
+                          <div className="w-11 h-11 rounded-full bg-tg-bg border border-tg-separator flex items-center justify-center shrink-0">
                             {isDeposit ? (
-                              <ArrowDown className="w-5 h-5 text-white/80" strokeWidth={2.2} />
+                              <ArrowDown className="w-5 h-5 text-tg-text" strokeWidth={2.2} />
                             ) : (
-                              <ArrowUp className="w-5 h-5 text-white/80" strokeWidth={2.2} />
+                              <ArrowUp className="w-5 h-5 text-tg-text" strokeWidth={2.2} />
                             )}
                           </div>
                         )}
 
                         <div className="min-w-0 flex flex-col justify-center">
-                          <span className="text-[15px] font-bold tracking-tight leading-tight text-white">
+                          <span className="text-[15px] font-bold tracking-tight leading-tight text-tg-text">
                             {txTitle}
                           </span>
-                          <span className="text-[12px] text-[#7E8F9E] font-medium leading-none mt-1">
+                          <span className="text-[12px] text-tg-hint font-medium leading-none mt-1">
                             {shortAddress}
                           </span>
                           {memo && !isGift && (
                             <div className="mt-1.5">
-                              <span className="px-2 py-0.5 rounded-full bg-white/[0.06] text-[10.5px] font-mono text-slate-300 leading-none inline-block">
+                              <span className="px-2 py-0.5 rounded-full bg-tg-bg text-[10.5px] font-mono text-tg-hint border border-tg-separator leading-none inline-block">
                                 {memo}
                               </span>
                             </div>
@@ -1149,11 +1149,11 @@ export function Assets() {
                       {/* Right: Crypto amount (+0.08 TON in green or -0.14 TON in white) & Time */}
                       <div className="flex flex-col items-end shrink-0 justify-center">
                         <span className={`text-[15px] font-bold tracking-tight leading-tight ${
-                          isPositive ? 'text-[#10B981]' : 'text-white'
+                          isPositive ? 'text-emerald-400' : 'text-tg-text'
                         }`}>
                           {cryptoStr}
                         </span>
-                        <span className="text-[12px] text-[#7E8F9E] font-medium leading-none mt-1">
+                        <span className="text-[12px] text-tg-hint font-medium leading-none mt-1">
                           {timeStr}
                         </span>
                       </div>
@@ -1162,7 +1162,7 @@ export function Assets() {
                 })}
               </div>
             ) : (
-              <div className="bg-[#1C1C1E] rounded-[24px] p-8 text-center text-[#708499] text-xs">
+              <div className="bg-tg-secondary rounded-[24px] p-8 text-center text-tg-hint text-xs">
                 <Activity className="w-6 h-6 mx-auto mb-1.5 opacity-50" />
                 <span>{t('assets.noTransactions', 'No transactions recorded yet.')}</span>
               </div>
@@ -1185,155 +1185,6 @@ export function Assets() {
         onClose={() => setIsStoryModalOpen(false)}
         currentUser={activeUser}
       />
-
-      {/* ========================================================================= */}
-      {/* MODAL 1: INSTANT CRYPTO SWAP SHEET                                        */}
-      {/* ========================================================================= */}
-      <AnimatePresence>
-        {modalType === 'swap' && (
-          <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center p-0 sm:p-4 font-telegram">
-            <motion.div 
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              exit={{ opacity: 0 }}
-              transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
-              onClick={() => setModalType(null)}
-              className="absolute inset-0 bg-black/80 backdrop-blur-[6px] transform-gpu"
-            />
-
-            <motion.div 
-              initial={{ y: "100%", opacity: 0.85 }}
-              animate={{ y: 0, opacity: 1 }}
-              exit={{ y: "100%", opacity: 0 }}
-              transition={{ type: "spring", damping: 30, stiffness: 350, mass: 0.8 }}
-              drag="y"
-              dragConstraints={{ top: 0 }}
-              dragElastic={{ top: 0.05, bottom: 0.4 }}
-              onDragEnd={(_, info) => {
-                if (info.offset.y > 90 || info.velocity.y > 350) {
-                  setModalType(null);
-                }
-              }}
-              className="relative w-full max-w-md bg-[#1C1C1E] rounded-t-3xl sm:rounded-3xl p-5 z-10 space-y-4 max-h-[90vh] overflow-y-auto transform-gpu will-change-transform touch-pan-y font-telegram border-t sm:border border-white/[0.06]"
-            >
-              {/* Top Handle bar (Mobile) */}
-              <div className="w-10 h-1 bg-white/25 rounded-full mx-auto -mt-1 mb-1 sm:hidden shrink-0" />
-
-              {/* Header */}
-              <div className="flex items-center justify-between pb-2 border-b border-white/[0.06]">
-                <div className="flex items-center space-x-2">
-                  <ArrowUpDown className="w-4 h-4 text-[#2EA5FF]" />
-                  <h3 className="text-sm font-bold text-white">{t('swap.title', 'Instant Crypto Swap')}</h3>
-                </div>
-                <button 
-                  onClick={() => setModalType(null)}
-                  className="w-8 h-8 rounded-full bg-[#1C1C1E] hover:bg-[#2C2C2E] text-[#8295A8] hover:text-white flex items-center justify-center transition-colors cursor-pointer"
-                >
-                  <X className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* From Coin Input */}
-              <div className="bg-[#1C1C1E] p-3.5 rounded-2xl space-y-2">
-                <div className="flex items-center justify-between text-xs text-[#78899B]">
-                  <span>{t('swap.youPay', 'You Pay')}</span>
-                  <span>{t('swap.available', 'Available: {{amount}} {{coin}}', { amount: (userCryptoBalances[swapFromCoin] || 0).toFixed(4), coin: swapFromCoin })}</span>
-                </div>
-                <div className="flex items-center justify-between space-x-3">
-                  <input 
-                    type="number"
-                    value={swapAmount}
-                    onChange={(e) => setSwapAmount(e.target.value)}
-                    placeholder="0.00"
-                    className="w-full bg-transparent text-xl font-bold font-mono text-white focus:outline-none"
-                  />
-                  <select 
-                    value={swapFromCoin}
-                    onChange={(e) => setSwapFromCoin(e.target.value)}
-                    className="bg-[#2C2C2E] text-white text-xs font-bold px-3 py-2 rounded-xl focus:outline-none cursor-pointer"
-                  >
-                    {['USDT', 'TON', 'STARS', 'BTC', 'ETH', 'SOL', 'BNB', 'TRX', 'DOGE', 'USDE', 'NOT'].map(sym => (
-                      <option key={sym} value={sym} className="bg-[#1C1C1E] text-white">{sym}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Swap Switch Button */}
-              <div className="flex items-center justify-center -my-2">
-                <button 
-                  onClick={() => {
-                    const temp = swapFromCoin;
-                    setSwapFromCoin(swapToCoin);
-                    setSwapToCoin(temp);
-                  }}
-                  className="w-8 h-8 rounded-full bg-[#2C2C2E] hover:bg-[#38383A] text-[#2EA5FF] flex items-center justify-center shadow-lg border border-[#0F1721] cursor-pointer"
-                >
-                  <ArrowUpDown className="w-4 h-4" />
-                </button>
-              </div>
-
-              {/* To Coin Output */}
-              <div className="bg-[#1C1C1E] p-3.5 rounded-2xl space-y-2">
-                <div className="flex items-center justify-between text-xs text-[#78899B]">
-                  <span>{t('swap.youReceive', 'You Receive')}</span>
-                  <span>{t('swap.rate', 'Rate: 1 {{from}} ≈ {{rate}} {{to}}', { from: swapFromCoin, rate: ((rates[swapFromCoin] || FALLBACK_RATES[swapFromCoin] || 1) / (rates[swapToCoin] || FALLBACK_RATES[swapToCoin] || 1)).toFixed(4), to: swapToCoin })}</span>
-                </div>
-                <div className="flex items-center justify-between space-x-3">
-                  <div className="text-xl font-bold font-mono text-white">
-                    {swapAmount && !isNaN(parseFloat(swapAmount)) 
-                      ? ((parseFloat(swapAmount) * (rates[swapFromCoin] || FALLBACK_RATES[swapFromCoin] || 1)) / (rates[swapToCoin] || FALLBACK_RATES[swapToCoin] || 1)).toFixed(6)
-                      : '0.00'}
-                  </div>
-                  <select 
-                    value={swapToCoin}
-                    onChange={(e) => setSwapToCoin(e.target.value)}
-                    className="bg-[#2C2C2E] text-white text-xs font-bold px-3 py-2 rounded-xl focus:outline-none cursor-pointer"
-                  >
-                    {['TON', 'USDT', 'STARS', 'BTC', 'ETH', 'SOL', 'BNB', 'TRX', 'DOGE', 'USDE', 'NOT'].map(sym => (
-                      <option key={sym} value={sym} className="bg-[#1C1C1E] text-white">{sym}</option>
-                    ))}
-                  </select>
-                </div>
-              </div>
-
-              {/* Confirm Swap Button */}
-              <button 
-                onClick={() => {
-                  const amt = parseFloat(swapAmount);
-                  if (isNaN(amt) || amt <= 0) {
-                    triggerToast(t('swap.enterAmount', 'Please enter an amount to swap.'));
-                    return;
-                  }
-                  const bal = userCryptoBalances[swapFromCoin] || 0;
-                  if (amt > bal && bal > 0) {
-                    triggerToast(t('swap.insufficientBalance', 'Insufficient {{coin}} balance.', { coin: swapFromCoin }));
-                    return;
-                  }
-                  setIsProcessing(true);
-                  setTimeout(() => {
-                    setIsProcessing(false);
-                    setModalType(null);
-                    setSwapAmount('');
-                    triggerToast(t('swap.successMsg', 'Swapped {{amount}} {{from}} to {{to}} successfully', { amount: amt, from: swapFromCoin, to: swapToCoin }));
-                  }, 600);
-                }}
-                disabled={isProcessing}
-                className="w-full py-3.5 bg-[#2481CC] hover:bg-[#1D74BD] active:scale-95 text-white font-extrabold text-xs rounded-2xl transition-all flex items-center justify-center space-x-2 cursor-pointer"
-              >
-                {isProcessing ? (
-                  <RefreshCw className="w-4 h-4 animate-spin text-white" />
-                ) : (
-                  <>
-                    <ArrowUpDown className="w-4 h-4 text-white" />
-                    <span>{t('swap.swapButton', 'Swap {{from}} to {{to}}', { from: swapFromCoin, to: swapToCoin })}</span>
-                  </>
-                )}
-              </button>
-            </motion.div>
-          </div>
-        )}
-      </AnimatePresence>
 
       {/* 3D Animated Bottom-Sheet Withdraw Modal */}
       <WithdrawModal
@@ -1385,25 +1236,25 @@ export function Assets() {
               initial={{ scale: 0.94, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
               exit={{ scale: 0.94, opacity: 0 }}
-              className="bg-[#1C1C1E] border border-[#233242] rounded-3xl p-5 max-w-xs w-full text-center space-y-4 shadow-xl relative text-white font-sans"
+              className="bg-tg-secondary rounded-3xl p-5 max-w-xs w-full text-center space-y-4 relative text-tg-text font-sans"
             >
               <button
                 type="button"
                 onClick={() => setIsSecuritySettingsOpen(false)}
-                className="absolute top-4 right-4 text-[#8295A8] hover:text-white p-1 cursor-pointer"
+                className="absolute top-4 right-4 text-tg-hint hover:text-tg-text p-1 cursor-pointer"
               >
                 <X className="w-4 h-4" />
               </button>
 
-              <div className="w-11 h-11 rounded-full bg-[#2EA5FF]/10 text-[#2EA5FF] flex items-center justify-center mx-auto mb-1">
+              <div className="w-11 h-11 rounded-full bg-tg-link/10 text-tg-link flex items-center justify-center mx-auto mb-1">
                 <ShieldCheck className="w-6 h-6" />
               </div>
 
               <div>
-                <h3 className="text-sm font-bold text-white">
+                <h3 className="text-sm font-bold text-tg-text">
                   Wallet Security
                 </h3>
-                <p className="text-xs text-[#8E8E93] mt-1 leading-relaxed">
+                <p className="text-xs text-tg-hint mt-1 leading-relaxed">
                   Your wallet is protected by a 4-digit passcode.
                 </p>
               </div>
@@ -1417,13 +1268,13 @@ export function Assets() {
                     setIsUnlocked(false);
                     setIsSecuritySettingsOpen(false);
                   }}
-                  className="w-full py-2.5 px-3.5 rounded-xl bg-[#242426] hover:bg-[#2C2C2E] active:scale-[0.98] transition-all flex items-center justify-between text-xs font-medium text-white border border-white/[0.06] cursor-pointer"
+                  className="w-full py-2.5 px-3.5 rounded-xl bg-tg-bg hover:bg-tg-bg/80 active:scale-[0.98] transition-all flex items-center justify-between text-xs font-medium text-tg-text border border-tg-separator cursor-pointer"
                 >
                   <span className="flex items-center space-x-2">
-                    <Lock className="w-4 h-4 text-[#2EA5FF]" />
+                    <Lock className="w-4 h-4 text-tg-link" />
                     <span>Lock Wallet Now</span>
                   </span>
-                  <span className="text-[10px] text-[#2EA5FF] bg-[#2EA5FF]/10 px-2 py-0.5 rounded font-mono">
+                  <span className="text-[10px] text-tg-link bg-tg-link/10 px-2 py-0.5 rounded font-mono">
                     Test
                   </span>
                 </button>
@@ -1435,13 +1286,13 @@ export function Assets() {
                     setIsSecuritySettingsOpen(false);
                     setIsSetupPinOpen(true);
                   }}
-                  className="w-full py-2.5 px-3.5 rounded-xl bg-[#242426] hover:bg-[#2C2C2E] active:scale-[0.98] transition-all flex items-center justify-between text-xs font-medium text-white border border-white/[0.06] cursor-pointer"
+                  className="w-full py-2.5 px-3.5 rounded-xl bg-tg-bg hover:bg-tg-bg/80 active:scale-[0.98] transition-all flex items-center justify-between text-xs font-medium text-tg-text border border-tg-separator cursor-pointer"
                 >
                   <span className="flex items-center space-x-2">
                     <KeyRound className="w-4 h-4 text-amber-400" />
                     <span>Change Passcode</span>
                   </span>
-                  <span className="text-[10px] text-[#8E8E93]">➔</span>
+                  <span className="text-[10px] text-tg-hint">➔</span>
                 </button>
 
                 {/* Disable Passcode Button */}

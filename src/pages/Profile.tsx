@@ -118,7 +118,7 @@ export function Profile() {
     displayUser.telegramUsername?.toLowerCase() === 'ai_zke';
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white pb-36 pt-4 select-none font-sans" dir="ltr" id="profile-page-container">
+    <div className="min-h-screen bg-tg-bg text-tg-text pb-36 pt-4 select-none font-sans" dir="ltr" id="profile-page-container">
       
       {/* Toast Notification */}
       <AnimatePresence>
@@ -129,8 +129,8 @@ export function Profile() {
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             className="fixed top-4 inset-x-4 z-50 flex items-center justify-center pointer-events-none"
           >
-            <div className="bg-[#1C1C1E] px-4 py-2.5 rounded-2xl text-xs font-semibold text-white flex items-center space-x-2 shadow-2xl border-0">
-              <CheckCircle2 className="w-4 h-4 text-[#007AFF]" />
+            <div className="bg-tg-secondary px-4 py-2.5 rounded-2xl text-xs font-semibold text-tg-text flex items-center space-x-2">
+              <CheckCircle2 className="w-4 h-4 text-tg-link" />
               <span className="tracking-tight">{toastMessage}</span>
             </div>
           </motion.div>
@@ -149,83 +149,83 @@ export function Profile() {
             />
           </div>
 
-          <h1 className="text-[20px] font-bold text-white tracking-tight leading-snug text-center max-w-[280px] truncate">
+          <h1 className="text-[20px] font-bold text-tg-text tracking-tight leading-snug text-center max-w-[280px] truncate">
             {displayName}
           </h1>
 
           <button 
             type="button"
             onClick={copyUserId}
-            className="text-[13px] text-[#8E8E93] hover:text-[#007AFF] font-medium tracking-tight transition-colors mt-0.5 active:scale-95 cursor-pointer border-0 bg-transparent"
+            className="text-[13px] text-tg-hint hover:text-tg-link font-medium tracking-tight transition-colors mt-0.5 active:scale-95 cursor-pointer border-0 bg-transparent"
           >
             {displayHandle}
           </button>
         </section>
 
-        {/* 2. TOP CARD: WALLET BALANCE (Refined Typography & Exact #1C1C1E Dark Card) */}
+        {/* 2. TOP CARD: WALLET BALANCE */}
         <section id="profile-balance-card">
-          <div className="bg-[#1C1C1E] rounded-[20px] p-4 flex items-center justify-between border-0 shadow-sm">
+          <div className="bg-tg-secondary rounded-[20px] p-4 flex items-center justify-between">
             <div className="flex items-center space-x-3.5 min-w-0">
-              <div className="w-11 h-11 rounded-full bg-[#007AFF] flex items-center justify-center shrink-0 shadow-sm">
+              <div className="w-11 h-11 rounded-full bg-tg-button flex items-center justify-center shrink-0">
                 <FaDollarIcon className="w-5.5 h-5.5 text-white" />
               </div>
 
               <div className="min-w-0">
-                <span className="text-[11px] text-[#8E8E93] font-medium uppercase tracking-wider block leading-none">
+                <span className="text-[11px] text-tg-hint font-medium uppercase tracking-wider block leading-none">
                   {t('profile.yourBalance', 'Total Wallet Balance')}
                 </span>
-                <span className="text-[28px] sm:text-[30px] font-black text-white tracking-tight leading-tight block mt-1 font-mono tabular-nums">
+                <span className="text-[28px] sm:text-[30px] font-black text-tg-text tracking-tight leading-tight block mt-1 font-mono tabular-nums">
                   ${userBalance.toLocaleString('en-US', { minimumFractionDigits: 2, maximumFractionDigits: 2 })}
                 </span>
               </div>
             </div>
 
-            {/* Deposit Button (Exact #007AFF Vibrant Telegram Blue) */}
+            {/* Deposit Button */}
             <button 
               type="button"
               onClick={() => {
                 triggerHaptic('selection');
                 navigate('/deposit');
               }}
-              className="px-4.5 py-2 bg-[#007AFF] hover:bg-[#0A84FF] active:scale-95 text-white text-[13.5px] font-bold rounded-full transition-all cursor-pointer shrink-0 font-sans border-0 shadow-lg shadow-[#007AFF]/25"
+              className="px-4.5 py-2 bg-tg-button hover:opacity-90 active:scale-95 text-white text-[13.5px] font-bold rounded-full transition-all cursor-pointer shrink-0 font-sans border-0"
             >
               {t('profile.deposit', 'Deposit')}
             </button>
           </div>
         </section>
 
-        {/* 3. SUPPORT CARD: THE SUPPORT DESK (No Arbitrage Text, Exact #1C1C1E Dark Card) */}
+        {/* 3. SUPPORT CARD: THE SUPPORT DESK */}
         <section id="profile-support-card">
-          <div className="bg-[#1C1C1E] rounded-[20px] p-4 flex items-start justify-between border-0 shadow-sm">
+          <div className="bg-tg-secondary rounded-[20px] p-4 flex items-start justify-between">
             <div className="pr-2">
-              <div className="flex items-center space-x-1.5 text-[11px] font-semibold text-[#409CFF]">
-                <FaSupportIcon className="w-3.5 h-3.5 text-[#409CFF]" />
+              <div className="flex items-center space-x-1.5 text-[11px] font-semibold text-tg-link">
+                <FaSupportIcon className="w-3.5 h-3.5 text-tg-link" />
                 <span>{t('profile.forTraders', '24/7 Official Support')}</span>
               </div>
 
-              <h3 className="text-[15px] font-bold text-white tracking-tight mt-1 leading-snug">
+              <h3 className="text-[15px] font-bold text-tg-text tracking-tight mt-1 leading-snug">
                 {t('profile.supportDeskTitle', 'The Official Support Desk')}
               </h3>
 
-              <p className="text-[11px] text-[#8E8E93] mt-0.5 leading-snug max-w-[230px]">
+              <p className="text-[11px] text-tg-hint mt-0.5 leading-snug max-w-[230px]">
                 {t('profile.supportDeskDesc', 'Priority 24/7 support for your questions, wallet transactions, and assistance.')}
               </p>
             </div>
 
-            {/* Open Button (Exact #2C2C2E Secondary Button Color from Screenshot) */}
+            {/* Open Button */}
             <button 
               type="button"
               onClick={openSupport}
-              className="px-4 py-2 bg-[#2C2C2E] hover:bg-[#38383A] active:scale-95 text-[#409CFF] text-[13px] font-semibold rounded-full transition-all cursor-pointer shrink-0 mt-1 font-sans border-0"
+              className="px-4 py-2 bg-tg-bg hover:opacity-90 active:scale-95 text-tg-link text-[13px] font-semibold rounded-full transition-all cursor-pointer shrink-0 mt-1 font-sans border-0"
             >
               {t('profile.open', 'Open')}
             </button>
           </div>
         </section>
 
-        {/* 4. GROUPED LIST CARD (Exact #1C1C1E Dark Card Surface, Cleaned Items) */}
+        {/* 4. GROUPED LIST CARD */}
         <section id="profile-grouped-menu">
-          <div className="bg-[#1C1C1E] rounded-[20px] overflow-hidden border-0 shadow-sm">
+          <div className="bg-tg-secondary rounded-[20px] overflow-hidden">
             
             {/* Row 1: Referral Program */}
             <button 
@@ -234,26 +234,26 @@ export function Profile() {
                 triggerHaptic('selection');
                 setActiveModal('referral');
               }}
-              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-[#242426] active:bg-[#2C2C2E] transition-colors cursor-pointer text-left group border-0 bg-transparent"
+              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-tg-bg active:opacity-75 transition-colors cursor-pointer text-left group border-0 bg-transparent"
             >
               <div className="flex items-center space-x-3.5 min-w-0">
                 <div className="w-7.5 h-7.5 rounded-[9px] bg-[#AF52DE] flex items-center justify-center text-white shrink-0">
                   <FaReferralIcon className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-[14px] font-semibold text-white tracking-tight">
+                <span className="text-[14px] font-semibold text-tg-text tracking-tight">
                   {t('profile.referralProgram', 'Referral Program')}
                 </span>
               </div>
               <div className="flex items-center space-x-1.5 shrink-0">
-                <span className="text-[12px] font-semibold text-[#409CFF] bg-[#18283B] px-2.5 py-0.5 rounded-full">
+                <span className="text-[12px] font-semibold text-tg-link bg-tg-bg border border-tg-separator px-2.5 py-0.5 rounded-full">
                   {displayUser.referralsCount || 0} {t('profile.partners', 'Partners')}
                 </span>
-                <ChevronRight className="w-4 h-4 text-[#636366] group-hover:text-white transition-colors" />
+                <ChevronRight className="w-4 h-4 text-tg-hint group-hover:text-tg-text transition-colors" />
               </div>
             </button>
 
             {/* Divider */}
-            <div className="ml-14 h-[1px] bg-white/[0.04]" />
+            <div className="ml-14 h-[1px] bg-tg-separator" />
 
             {/* Row 2: Deposit Wallet */}
             <button 
@@ -262,26 +262,26 @@ export function Profile() {
                 triggerHaptic('selection');
                 navigate('/assets');
               }}
-              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-[#242426] active:bg-[#2C2C2E] transition-colors cursor-pointer text-left group border-0 bg-transparent"
+              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-tg-bg active:opacity-75 transition-colors cursor-pointer text-left group border-0 bg-transparent"
             >
               <div className="flex items-center space-x-3.5 min-w-0">
                 <div className="w-7.5 h-7.5 rounded-[9px] bg-[#0284C7] flex items-center justify-center text-white shrink-0">
                   <FaWalletIcon className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-[14px] font-semibold text-white tracking-tight">
+                <span className="text-[14px] font-semibold text-tg-text tracking-tight">
                   {t('profile.wallet', 'Deposit Wallet')}
                 </span>
               </div>
               <div className="flex items-center space-x-1.5 shrink-0">
-                <span className="text-[12px] font-medium text-[#8E8E93]">
+                <span className="text-[12px] font-medium text-tg-hint">
                   {t('profile.multiChain', 'Multi-Chain')}
                 </span>
-                <ChevronRight className="w-4 h-4 text-[#636366] group-hover:text-white transition-colors" />
+                <ChevronRight className="w-4 h-4 text-tg-hint group-hover:text-tg-text transition-colors" />
               </div>
             </button>
 
             {/* Divider */}
-            <div className="ml-14 h-[1px] bg-white/[0.04]" />
+            <div className="ml-14 h-[1px] bg-tg-separator" />
 
             {/* Row 3: Language Preference */}
             <button 
@@ -290,27 +290,27 @@ export function Profile() {
                 triggerHaptic('selection');
                 setActiveModal('language');
               }}
-              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-[#242426] active:bg-[#2C2C2E] transition-colors cursor-pointer text-left group border-0 bg-transparent"
+              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-tg-bg active:opacity-75 transition-colors cursor-pointer text-left group border-0 bg-transparent"
             >
               <div className="flex items-center space-x-3.5 min-w-0">
                 <div className="w-7.5 h-7.5 rounded-[9px] bg-[#32ADE6] flex items-center justify-center text-white shrink-0">
                   <FaLanguageIcon className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-[14px] font-semibold text-white tracking-tight">
+                <span className="text-[14px] font-semibold text-tg-text tracking-tight">
                   {t('profile.language', 'Language')}
                 </span>
               </div>
               <div className="flex items-center space-x-1.5 shrink-0">
-                <span className="text-[12px] font-medium text-[#409CFF] flex items-center gap-1.5">
+                <span className="text-[12px] font-medium text-tg-link flex items-center gap-1.5">
                   <LanguageFlagIcon code={currentLangObj.code} className="w-4 h-4 shrink-0" />
                   <span>{currentLangObj.nativeName}</span>
                 </span>
-                <ChevronRight className="w-4 h-4 text-[#636366] group-hover:text-white transition-colors" />
+                <ChevronRight className="w-4 h-4 text-tg-hint group-hover:text-tg-text transition-colors" />
               </div>
             </button>
 
             {/* Divider */}
-            <div className="ml-14 h-[1px] bg-white/[0.04]" />
+            <div className="ml-14 h-[1px] bg-tg-separator" />
 
             {/* Row 4: Theme & Appearance Preference */}
             <button 
@@ -319,41 +319,41 @@ export function Profile() {
                 triggerHaptic('selection');
                 setActiveModal('theme');
               }}
-              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-[#242426] active:bg-[#2C2C2E] transition-colors cursor-pointer text-left group border-0 bg-transparent"
+              className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-tg-bg active:opacity-75 transition-colors cursor-pointer text-left group border-0 bg-transparent"
             >
               <div className="flex items-center space-x-3.5 min-w-0">
                 <div className="w-7.5 h-7.5 rounded-[9px] bg-gradient-to-tr from-[#8B5CF6] to-[#6366F1] flex items-center justify-center text-white shrink-0 shadow-sm">
                   <Palette className="w-4 h-4 text-white" />
                 </div>
-                <span className="text-[14px] font-semibold text-white tracking-tight">
-                  Theme
+                <span className="text-[14px] font-semibold text-tg-text tracking-tight">
+                  {t('profile.theme', 'Theme')}
                 </span>
               </div>
               <div className="flex items-center space-x-1.5 shrink-0">
-                <span className="text-[12px] font-medium text-[#409CFF]">
-                  {theme === 'onyx' ? 'Dark' : 'Navy'}
+                <span className="text-[12px] font-medium text-tg-link">
+                  {theme === 'auto' ? 'Auto (Telegram)' : theme === 'dark' ? 'Dark' : 'Light'}
                 </span>
-                <ChevronRight className="w-4 h-4 text-[#636366] group-hover:text-white transition-colors" />
+                <ChevronRight className="w-4 h-4 text-tg-hint group-hover:text-tg-text transition-colors" />
               </div>
             </button>
 
             {/* Admin Row if authorized */}
             {isAdmin && (
               <>
-                <div className="ml-14 h-[1px] bg-white/[0.04]" />
+                <div className="ml-14 h-[1px] bg-tg-separator" />
                 <button 
                   type="button"
                   onClick={() => {
                     triggerHaptic('medium');
                     navigate('/admin');
                   }}
-                  className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-[#242426] active:bg-[#2C2C2E] transition-colors cursor-pointer text-left group border-0 bg-transparent"
+                  className="w-full flex items-center justify-between px-4 py-3.5 hover:bg-tg-bg active:opacity-75 transition-colors cursor-pointer text-left group border-0 bg-transparent"
                 >
                   <div className="flex items-center space-x-3.5 min-w-0">
                     <div className="w-7.5 h-7.5 rounded-[9px] bg-[#F59E0B] flex items-center justify-center text-white shrink-0">
                       <ShieldAlert className="w-4 h-4" />
                     </div>
-                    <span className="text-[14px] font-semibold text-white tracking-tight">
+                    <span className="text-[14px] font-semibold text-tg-text tracking-tight">
                       {t('profile.adminDesk', 'Security Desk (Admin)')}
                     </span>
                   </div>
@@ -361,7 +361,7 @@ export function Profile() {
                     <span className="px-2.5 py-0.5 rounded-full bg-[#F59E0B]/20 text-[#F59E0B] text-[10px] font-bold font-mono">
                       {t('profile.adminBadge', 'Admin')}
                     </span>
-                    <ChevronRight className="w-4 h-4 text-[#636366] group-hover:text-white transition-colors" />
+                    <ChevronRight className="w-4 h-4 text-tg-hint group-hover:text-tg-text transition-colors" />
                   </div>
                 </button>
               </>

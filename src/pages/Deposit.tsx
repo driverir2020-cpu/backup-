@@ -490,7 +490,7 @@ export function Deposit() {
   }, [coins]);
 
   return (
-    <div className="min-h-screen bg-[#000000] text-white flex flex-col justify-between select-none relative pb-28 font-sans">
+    <div className="min-h-screen bg-tg-bg text-tg-text flex flex-col justify-between select-none relative pb-28 font-sans">
       
       {/* Toast Notification */}
       <AnimatePresence>
@@ -500,9 +500,9 @@ export function Deposit() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: -20, scale: 0.95 }}
             transition={{ duration: 0.15 }}
-            className="fixed top-4 left-1/2 -translate-x-1/2 z-[220] bg-[#1C1C1E] text-white text-xs font-semibold px-4 py-2.5 rounded-full flex items-center space-x-2 shadow-lg"
+            className="fixed top-4 left-1/2 -translate-x-1/2 z-[220] bg-tg-secondary border border-tg-separator text-tg-text text-xs font-semibold px-4 py-2.5 rounded-full flex items-center space-x-2 shadow-lg"
           >
-            <Sparkles className="w-3.5 h-3.5 text-[#2EA5FF] shrink-0" />
+            <Sparkles className="w-3.5 h-3.5 text-tg-link shrink-0" />
             <span>{toastMessage}</span>
           </motion.div>
         )}
@@ -510,7 +510,7 @@ export function Deposit() {
 
       <AnimatePresence mode="wait">
         {/* ========================================================================= */}
-        {/* VIEW 1: COIN SELECTION (ULTRA MINIMAL - NO CARDS, NO ICON BOXES)          */}
+        {/* VIEW 1: COIN SELECTION                                                    */}
         {/* ========================================================================= */}
         {viewState === 'select_coin' ? (
           <motion.div 
@@ -525,39 +525,39 @@ export function Deposit() {
             <div className="flex items-center justify-between mb-6">
               <button 
                 onClick={() => navigate(-1)}
-                className="p-1.5 text-white/70 hover:text-white transition-colors cursor-pointer"
+                className="p-1.5 text-tg-hint hover:text-tg-text transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-6 h-6 rtl:rotate-180" />
               </button>
-              <h1 className="text-[17px] font-bold text-white tracking-tight">
+              <h1 className="text-[17px] font-bold text-tg-text tracking-tight">
                 {customInvoiceTitle || (isFromBot ? t('deposit.depositForBot', 'Deposit for Bot') : t('deposit.depositTitle', 'Deposit'))}
               </h1>
               <div className="w-6" />
             </div>
 
-            {/* iOS-style Minimalist Amount Input - Simple, minimalist, borderless, no enclosing card */}
+            {/* iOS-style Minimalist Amount Input */}
             <div className="mb-6 px-1">
               <div className="flex justify-between items-center mb-1.5">
-                <span className="text-xs font-bold text-[#8295A8] uppercase tracking-wider font-mono">{t('deposit.depositAmountUSD', 'Deposit Amount (USD)')}</span>
+                <span className="text-xs font-bold text-tg-hint uppercase tracking-wider font-mono">{t('deposit.depositAmountUSD', 'Deposit Amount (USD)')}</span>
                 {usdAmountError && (
                   <span className="text-[11px] text-rose-400 font-semibold leading-none">{usdAmountError}</span>
                 )}
               </div>
-              <div className="flex items-center bg-transparent py-2.5 border-b border-[#1C2735]/30 focus-within:border-[#2EA5FF]/60 transition-all">
-                <span className="text-3xl font-bold text-[#2EA5FF] mr-2.5 rtl:ml-2.5 rtl:mr-0 font-sans">$</span>
+              <div className="flex items-center bg-transparent py-2.5 border-b border-tg-separator focus-within:border-tg-link transition-all">
+                <span className="text-3xl font-bold text-tg-link mr-2.5 rtl:ml-2.5 rtl:mr-0 font-sans">$</span>
                 <input 
                   type="text"
                   inputMode="decimal"
                   value={usdAmount}
                   onChange={handleUsdAmountChange}
                   placeholder="10"
-                  className="w-full bg-transparent text-3xl font-bold text-white placeholder:text-white/20 focus:outline-none tracking-tight font-sans"
+                  className="w-full bg-transparent text-3xl font-bold text-tg-text placeholder:text-tg-hint/40 focus:outline-none tracking-tight font-sans"
                 />
               </div>
             </div>
 
-            {/* CURRENCIES & METHODS - Wrapped in Single Card with Subtle Corners */}
-            <div className="bg-[#1C1C1E] rounded-xl overflow-hidden divide-y divide-[#1C2735]/30 shadow-lg">
+            {/* CURRENCIES & METHODS - Wrapped in Single Card */}
+            <div className="bg-tg-secondary rounded-2xl overflow-hidden divide-y divide-tg-separator">
               {/* Option 1: Telegram Stars */}
               <button
                 onClick={() => {
@@ -570,18 +570,18 @@ export function Deposit() {
                   }
                   setShowStarsModal(true);
                 }}
-                className="w-full p-3.5 flex items-center justify-between group hover:bg-[#242426]/30 active:bg-[#2C2C2E]/40 transition-colors cursor-pointer text-left rtl:text-right"
+                className="w-full p-3.5 flex items-center justify-between group hover:bg-tg-bg/40 active:bg-tg-bg/70 transition-colors cursor-pointer text-left rtl:text-right"
               >
                 <div className="flex items-center space-x-3.5 rtl:space-x-reverse">
                   <div className="w-10 h-10 rounded-full bg-amber-500/10 border border-amber-500/25 flex items-center justify-center shrink-0 shadow-inner">
                     <TelegramStarIcon size={38} className="shrink-0 drop-shadow-md" />
                   </div>
                   <div className="text-left rtl:text-right">
-                    <span className="text-[15px] font-bold text-white block leading-snug">{t('deposit.telegramStars', 'Telegram Stars')}</span>
-                    <span className="text-[12px] text-[#8295A8] font-medium leading-none">{t('deposit.instantPayment', 'Instant Payment')}</span>
+                    <span className="text-[15px] font-bold text-tg-text block leading-snug">{t('deposit.telegramStars', 'Telegram Stars')}</span>
+                    <span className="text-[12px] text-tg-hint font-medium leading-none">{t('deposit.instantPayment', 'Instant Payment')}</span>
                   </div>
                 </div>
-                <ChevronRight className="w-5 h-5 text-[#8295A8] group-hover:text-white transition-colors shrink-0 rtl:rotate-180" />
+                <ChevronRight className="w-5 h-5 text-tg-hint group-hover:text-tg-text transition-colors shrink-0 rtl:rotate-180" />
               </button>
 
               {/* Crypto Options */}
@@ -592,10 +592,9 @@ export function Deposit() {
                     id={`deposit-coin-${item.symbol.toLowerCase()}`}
                     data-tour={`coin-${item.symbol.toLowerCase()}`}
                     onClick={() => handleSelectCoin(item.coin, item.networkIndex)}
-                    className="w-full p-3.5 flex items-center justify-between group hover:bg-[#242426]/30 active:bg-[#2C2C2E]/40 transition-colors cursor-pointer text-left rtl:text-right"
+                    className="w-full p-3.5 flex items-center justify-between group hover:bg-tg-bg/40 active:bg-tg-bg/70 transition-colors cursor-pointer text-left rtl:text-right"
                   >
                     <div className="flex items-center space-x-3.5 rtl:space-x-reverse">
-                      {/* Un-boxed Icon */}
                       <CryptoIcon 
                         symbol={item.symbol} 
                         network={item.networkShortName} 
@@ -604,22 +603,22 @@ export function Deposit() {
                       />
                       <div className="text-left rtl:text-right">
                         <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
-                          <span className="text-[15px] font-bold text-white leading-snug">
+                          <span className="text-[15px] font-bold text-tg-text leading-snug">
                             {item.displayName || item.symbol}
                           </span>
                           <VerifiedBadge className="w-3.5 h-3.5" />
-                          <span className="px-1.5 py-0.5 bg-[#2C2C2E] text-[#8295A8] text-[11px] font-semibold rounded-md leading-none">
+                          <span className="px-1.5 py-0.5 bg-tg-bg text-tg-hint border border-tg-separator text-[11px] font-semibold rounded-md leading-none">
                             {item.networkShortName}
                           </span>
                         </div>
-                        <span className="text-[12px] text-[#8295A8] font-medium block mt-0.5 leading-none">
+                        <span className="text-[12px] text-tg-hint font-medium block mt-0.5 leading-none">
                           {item.networkFullName}
                         </span>
                       </div>
                     </div>
 
                     <div className="flex items-center space-x-2 rtl:space-x-reverse">
-                      <ChevronRight className="w-5 h-5 text-[#8295A8] group-hover:text-white transition-colors shrink-0 rtl:rotate-180" />
+                      <ChevronRight className="w-5 h-5 text-tg-hint group-hover:text-tg-text transition-colors shrink-0 rtl:rotate-180" />
                     </div>
                   </button>
                 );
@@ -627,14 +626,14 @@ export function Deposit() {
             </div>
 
             {/* General Inquiries & Live Support Button */}
-            <div className="mt-8 pt-4 border-t border-white/[0.06]">
+            <div className="mt-8 pt-4 border-t border-tg-separator">
               <button
                 type="button"
                 onClick={handleOpenSupport}
-                className="w-full py-3.5 px-4 bg-[#1C1C1E] hover:bg-[#242426] active:bg-[#2C2C2E] border border-0 text-white font-medium text-xs rounded-2xl transition-all flex items-center justify-center space-x-2.5 rtl:space-x-reverse cursor-pointer shadow-sm select-none"
+                className="w-full py-3.5 px-4 bg-tg-secondary hover:bg-tg-bg active:bg-tg-bg/80 border border-tg-separator text-tg-text font-medium text-xs rounded-2xl transition-all flex items-center justify-center space-x-2.5 rtl:space-x-reverse cursor-pointer shadow-sm select-none"
               >
-                <TelegramPlaneIcon className="w-4 h-4 text-[#2EA5FF] shrink-0" />
-                <span className="text-[#A5B7C9]">{t('deposit.needHelpSupport', 'Have questions? Chat with Live Support')}</span>
+                <TelegramPlaneIcon className="w-4 h-4 text-tg-link shrink-0" />
+                <span className="text-tg-hint">{t('deposit.needHelpSupport', 'Have questions? Chat with Live Support')}</span>
               </button>
             </div>
 
@@ -652,17 +651,17 @@ export function Deposit() {
             className="w-full max-w-md mx-auto flex flex-col flex-1 px-5 pt-4 pb-8 select-none"
           >
             {/* Header Bar */}
-            <div className="flex items-center justify-between pb-4 mb-3 border-b border-white/[0.06]">
+            <div className="flex items-center justify-between pb-4 mb-3 border-b border-tg-separator">
               <button 
                 onClick={() => setViewState('select_coin')}
-                className="p-1 text-[#8295A8] hover:text-white transition-colors cursor-pointer"
+                className="p-1 text-tg-hint hover:text-tg-text transition-colors cursor-pointer"
               >
                 <ChevronLeft className="w-6 h-6" />
               </button>
 
               <button 
                 onClick={() => setShowCoinModal(true)}
-                className="flex items-center space-x-2 bg-[#242426] px-3.5 py-1.5 rounded-full cursor-pointer hover:bg-[#2C2C2E] transition-colors"
+                className="flex items-center space-x-2 bg-tg-secondary border border-tg-separator px-3.5 py-1.5 rounded-full cursor-pointer hover:bg-tg-bg transition-colors"
               >
                 <CryptoIcon 
                   symbol={selectedCoin.symbol} 
@@ -670,17 +669,17 @@ export function Deposit() {
                   customIconUrl={currentNetwork.iconUrl}
                   className="w-5 h-5" 
                 />
-                <span className="text-sm font-bold text-white">
+                <span className="text-sm font-bold text-tg-text">
                   {selectedCoin.symbol} ({currentNetwork.shortName})
                 </span>
-                <ChevronDown className="w-3.5 h-3.5 text-[#8295A8]" />
+                <ChevronDown className="w-3.5 h-3.5 text-tg-hint" />
               </button>
 
               <div className="flex items-center space-x-2">
                 <button 
                   onClick={handleOpenSupport}
                   title="Telegram Support"
-                  className="p-1.5 text-[#2EA5FF] hover:text-[#52b6ff] transition-colors cursor-pointer"
+                  className="p-1.5 text-tg-link hover:brightness-110 transition-colors cursor-pointer"
                 >
                   <TelegramPlaneIcon className="w-5.5 h-5.5 shrink-0" />
                 </button>
@@ -689,9 +688,9 @@ export function Deposit() {
 
             {/* Custom Invoice Title Banner */}
             {customInvoiceTitle && (
-              <div className="mb-3 px-3 py-2 rounded-xl bg-[#2EA5FF]/10 border border-[#2EA5FF]/25 text-center flex items-center justify-center space-x-2">
-                <Sparkles className="w-3.5 h-3.5 text-[#2EA5FF] shrink-0" />
-                <span className="text-xs font-bold text-[#2EA5FF]">
+              <div className="mb-3 px-3 py-2 rounded-xl bg-tg-link/10 border border-tg-link/25 text-center flex items-center justify-center space-x-2">
+                <Sparkles className="w-3.5 h-3.5 text-tg-link shrink-0" />
+                <span className="text-xs font-bold text-tg-link">
                   {customInvoiceTitle}
                 </span>
               </div>
@@ -712,22 +711,22 @@ export function Deposit() {
                     fgColor="#000000"
                   />
                 </div>
-                <span className="text-[12px] text-[#8295A8] mt-3 font-medium">
+                <span className="text-[12px] text-tg-hint mt-3 font-medium">
                   {t('deposit.scanOrCopy', 'Scan QR code or copy deposit address')}
                 </span>
               </div>
 
               {/* Deposit Address Block */}
-              <div className="bg-[#1C1C1E] rounded-[22px] p-4 space-y-2">
+              <div className="bg-tg-secondary rounded-[22px] p-4 space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs text-[#8295A8] font-medium">
+                  <span className="text-xs text-tg-hint font-medium">
                     {currentNetwork.name} {t('deposit.addressLabel', 'Official Deposit Address')}
                   </span>
                   <button
                     id="deposit-copy-address-btn"
                     data-tour="copy-address-btn"
                     onClick={() => handleCopy(currentNetwork.address, 'address')}
-                    className="text-xs font-bold text-[#2EA5FF] hover:text-[#52b6ff] flex items-center space-x-1 cursor-pointer"
+                    className="text-xs font-bold text-tg-link hover:brightness-110 flex items-center space-x-1 cursor-pointer"
                   >
                     {copiedType === 'address' ? (
                       <>
@@ -745,21 +744,21 @@ export function Deposit() {
 
                 <div 
                   onClick={() => handleCopy(currentNetwork.address, 'address')}
-                  className="bg-[#242426] p-3 rounded-xl text-xs text-white font-mono break-all cursor-pointer hover:bg-[#2C2C2E] transition-colors"
+                  className="bg-tg-bg border border-tg-separator p-3 rounded-xl text-xs text-tg-text font-mono break-all cursor-pointer hover:bg-tg-bg/70 transition-colors"
                 >
                   {currentNetwork.address}
                 </div>
 
                 {/* MEMO Tag for TON */}
                 {(currentNetwork.memo || userDedicatedMemo) && (
-                  <div className="pt-2 border-t border-white/[0.06] flex justify-between items-center">
+                  <div className="pt-2 border-t border-tg-separator flex justify-between items-center">
                     <div>
-                      <span className="text-[11px] text-[#8295A8] block">{t('deposit.memoComment', 'MEMO / Comment')}</span>
-                      <span className="text-xs font-bold text-white font-mono">{currentNetwork.memo || userDedicatedMemo}</span>
+                      <span className="text-[11px] text-tg-hint block">{t('deposit.memoComment', 'MEMO / Comment')}</span>
+                      <span className="text-xs font-bold text-tg-text font-mono">{currentNetwork.memo || userDedicatedMemo}</span>
                     </div>
                     <button
                       onClick={() => handleCopy(currentNetwork.memo || userDedicatedMemo, 'memo')}
-                      className="p-1.5 bg-[#242426] hover:bg-[#2C2C2E] rounded-lg text-xs text-[#2EA5FF] flex items-center space-x-1 cursor-pointer"
+                      className="p-1.5 bg-tg-bg border border-tg-separator hover:bg-tg-bg/80 rounded-lg text-xs text-tg-link flex items-center space-x-1 cursor-pointer"
                     >
                       {copiedType === 'memo' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                       <span>{copiedType === 'memo' ? t('deposit.copied', 'Copied') : t('deposit.copy', 'Copy')}</span>
@@ -775,46 +774,46 @@ export function Deposit() {
                     href={tonLinks.tonkeeperUrl}
                     target="_blank"
                     rel="noreferrer"
-                    className="py-3 px-2 bg-[#2EA5FF] hover:bg-[#2694E8] text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
+                    className="py-3 px-2 bg-tg-button hover:opacity-90 text-tg-button-text font-bold text-xs rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
                   >
                     <Smartphone className="w-4 h-4" />
                     <span>Tonkeeper</span>
                   </a>
                   <a
                     href={tonLinks.tonUri}
-                    className="py-3 px-2 bg-[#1C1C1E] hover:bg-[#242426] text-white font-bold text-xs rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
+                    className="py-3 px-2 bg-tg-secondary border border-tg-separator hover:bg-tg-bg text-tg-text font-bold text-xs rounded-xl transition-all flex items-center justify-center space-x-1.5 cursor-pointer"
                   >
-                    <Wallet className="w-4 h-4 text-[#2EA5FF]" />
+                    <Wallet className="w-4 h-4 text-tg-link" />
                     <span>Telegram @wallet</span>
                   </a>
                 </div>
               )}
 
               {/* Amount Breakdown */}
-              <div className="bg-[#1C1C1E] rounded-[22px] p-4 space-y-2.5">
+              <div className="bg-tg-secondary rounded-[22px] p-4 space-y-2.5">
                 <div className="flex justify-between items-center">
-                  <span className="text-xs text-[#8295A8] font-medium">{t('deposit.amountToSend', 'Amount to Send')}</span>
+                  <span className="text-xs text-tg-hint font-medium">{t('deposit.amountToSend', 'Amount to Send')}</span>
                   <button
                     onClick={() => handleCopy(calculatedCryptoAmount.toString(), 'amount')}
-                    className="text-xs font-bold text-[#2EA5FF] flex items-center space-x-1.5 hover:text-[#52b6ff] cursor-pointer"
+                    className="text-xs font-bold text-tg-link flex items-center space-x-1.5 hover:brightness-110 cursor-pointer"
                   >
-                    <span className="font-bold text-white text-[15px] tracking-tight">{calculatedCryptoAmount} {selectedCoin.symbol}</span>
+                    <span className="font-bold text-tg-text text-[15px] tracking-tight">{calculatedCryptoAmount} {selectedCoin.symbol}</span>
                     {copiedType === 'amount' ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
                   </button>
                 </div>
 
-                <div className="flex justify-between items-center pt-2 border-t border-white/[0.06]">
-                  <span className="text-xs text-[#8295A8] font-medium">{t('deposit.equivalentUSD', 'Equivalent USD')}</span>
-                  <span className="text-sm font-bold text-[#2EA5FF] tracking-tight">${parsedUsdAmount.toFixed(2)} USD</span>
+                <div className="flex justify-between items-center pt-2 border-t border-tg-separator">
+                  <span className="text-xs text-tg-hint font-medium">{t('deposit.equivalentUSD', 'Equivalent USD')}</span>
+                  <span className="text-sm font-bold text-tg-link tracking-tight">${parsedUsdAmount.toFixed(2)} USD</span>
                 </div>
               </div>
 
               {/* Automated Scanner Notification */}
               <div className="space-y-3 pt-1">
-                <div className="p-3.5 bg-[#1C1C1E]/70 border border-white/[0.06] rounded-2xl flex items-start space-x-3 rtl:space-x-reverse text-xs text-[#8295A8]">
-                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 mt-0.5 animate-pulse shadow-sm shadow-emerald-500/50" />
-                  <div className="flex-1 text-[11.5px] leading-relaxed text-[#94A3B8]">
-                    <span className="text-white font-semibold block mb-0.5">
+                <div className="p-3.5 bg-tg-secondary rounded-2xl flex items-start space-x-3 rtl:space-x-reverse text-xs text-tg-hint">
+                  <span className="w-2.5 h-2.5 rounded-full bg-emerald-400 shrink-0 mt-0.5 animate-pulse" />
+                  <div className="flex-1 text-[11.5px] leading-relaxed text-tg-hint">
+                    <span className="text-tg-text font-semibold block mb-0.5">
                       {t('deposit.autoScannerTitle', '⚡ Automated Keyless Verification Active')}
                     </span>
                     {t('deposit.autoScannerDesc', 'Transfer the exact amount, or more/less. The system monitors the blockchain automatically and instantly credits your balance with the exact received value. No TxID needed!')}
@@ -840,34 +839,34 @@ export function Deposit() {
               <CheckCircle2 className="w-12 h-12" />
             </div>
 
-            <h2 className="text-2xl font-extrabold text-white mb-1">
+            <h2 className="text-2xl font-extrabold text-tg-text mb-1">
               {t('deposit.depositConfirmed', 'Deposit Confirmed!')}
             </h2>
-            <p className="text-xs text-[#8295A8] mb-6">
+            <p className="text-xs text-tg-hint mb-6">
               {t('deposit.depositConfirmedDesc', 'Your transaction has been verified on-chain and added to your balance.')}
             </p>
 
-            <div className="bg-[#1C1C1E] rounded-[22px] p-4 space-y-3 text-left font-sans mb-6">
+            <div className="bg-tg-secondary rounded-[22px] p-4 space-y-3 text-left font-sans mb-6">
               <div className="flex justify-between items-center text-xs">
-                <span className="text-[#8295A8]">{t('deposit.creditedAmount', 'Credited Amount')}</span>
+                <span className="text-tg-hint">{t('deposit.creditedAmount', 'Credited Amount')}</span>
                 <span className="text-emerald-400 font-extrabold text-sm">
                   +${(submittedDeposit?.usdAmount || parsedUsdAmount).toFixed(2)} USD
                   {submittedDeposit?.cryptoAmount ? ` (${submittedDeposit.cryptoAmount} ${selectedCoin.symbol})` : ''}
                 </span>
               </div>
               <div className="flex justify-between text-xs">
-                <span className="text-[#8295A8]">{t('deposit.network', 'Network')}</span>
-                <span className="text-white font-bold">{currentNetwork.name}</span>
+                <span className="text-tg-hint">{t('deposit.network', 'Network')}</span>
+                <span className="text-tg-text font-bold">{currentNetwork.name}</span>
               </div>
               {submittedDeposit?.txid && (
                 <div className="flex justify-between text-xs">
-                  <span className="text-[#8295A8]">{t('deposit.txid', 'On-Chain Tx')}</span>
-                  <span className="text-white font-mono text-[11px] truncate max-w-[180px]">{submittedDeposit.txid}</span>
+                  <span className="text-tg-hint">{t('deposit.txid', 'On-Chain Tx')}</span>
+                  <span className="text-tg-text font-mono text-[11px] truncate max-w-[180px]">{submittedDeposit.txid}</span>
                 </div>
               )}
               <div className="flex justify-between text-xs">
-                <span className="text-[#8295A8]">{t('deposit.orderId', 'Order ID')}</span>
-                <span className="text-white font-mono font-bold">{orderId}</span>
+                <span className="text-tg-hint">{t('deposit.orderId', 'Order ID')}</span>
+                <span className="text-tg-text font-mono font-bold">{orderId}</span>
               </div>
             </div>
 
@@ -875,7 +874,7 @@ export function Deposit() {
               id="deposit-go-to-portfolio-btn"
               data-tour="go-to-portfolio-btn"
               onClick={() => navigate('/assets')}
-              className="w-full bg-emerald-500 hover:bg-emerald-600 text-white font-bold py-3.5 rounded-[20px] transition-all cursor-pointer text-[15px]"
+              className="w-full bg-tg-button hover:opacity-90 text-tg-button-text font-bold py-3.5 rounded-[20px] transition-all cursor-pointer text-[15px]"
             >
               {t('deposit.goToPortfolio', 'Go to Portfolio')}
             </button>
@@ -894,7 +893,7 @@ export function Deposit() {
               exit={{ opacity: 0 }}
               transition={{ duration: 0.22, ease: [0.32, 0.72, 0, 1] }}
               onClick={() => setShowCoinModal(false)}
-              className="fixed inset-0 bg-black/80 backdrop-blur-[6px] transform-gpu" 
+              className="fixed inset-0 bg-black/60 backdrop-blur-sm transform-gpu" 
             />
 
             {/* Telegram UI Bottom-Sheet Modal (Spring & Swipe Down) */}
@@ -911,15 +910,15 @@ export function Deposit() {
                   setShowCoinModal(false);
                 }
               }}
-              className="relative w-full max-w-md bg-[#242426] p-5 z-10 rounded-t-[32px] overflow-hidden max-h-[70vh] flex flex-col transform-gpu will-change-transform font-telegram border-t border-white/[0.06] touch-pan-y"
+              className="relative w-full max-w-md bg-tg-secondary p-5 z-10 rounded-t-[32px] overflow-hidden max-h-[70vh] flex flex-col transform-gpu will-change-transform font-telegram border-t border-tg-separator touch-pan-y"
             >
-              <div className="w-12 h-1 bg-white/25 rounded-full mx-auto mb-4 opacity-70" />
+              <div className="w-12 h-1 bg-tg-hint/40 rounded-full mx-auto mb-4" />
 
-              <div className="flex justify-between items-center mb-4 pb-2 border-b border-white/[0.06]">
-                <h3 className="text-base font-bold text-white">{t('deposit.selectCryptocurrency', 'Select Cryptocurrency')}</h3>
+              <div className="flex justify-between items-center mb-4 pb-2 border-b border-tg-separator">
+                <h3 className="text-base font-bold text-tg-text">{t('deposit.selectCryptocurrency', 'Select Cryptocurrency')}</h3>
                 <button 
                   onClick={() => setShowCoinModal(false)}
-                  className="w-8 h-8 rounded-full bg-[#2C2C2E] text-[#8295A8] hover:text-white flex items-center justify-center cursor-pointer"
+                  className="w-8 h-8 rounded-full bg-tg-bg border border-tg-separator text-tg-hint hover:text-tg-text flex items-center justify-center cursor-pointer"
                 >
                   <X className="w-4 h-4" />
                 </button>
@@ -933,7 +932,7 @@ export function Deposit() {
                       handleSelectCoin(item.coin, item.networkIndex);
                       setShowCoinModal(false);
                     }}
-                    className={`w-full py-3.5 px-3 rounded-xl flex items-center justify-between cursor-pointer transition-colors ${ selectedCoin.id === item.coin.id && selectedNetworkIndex === item.networkIndex ? 'bg-[#2C2C2E] text-white' : 'hover:bg-[#1C1C1E] text-[#8295A8]' }`}
+                    className={`w-full py-3.5 px-3 rounded-xl flex items-center justify-between cursor-pointer transition-colors ${ selectedCoin.id === item.coin.id && selectedNetworkIndex === item.networkIndex ? 'bg-tg-bg text-tg-text' : 'hover:bg-tg-bg/50 text-tg-hint' }`}
                   >
                     <div className="flex items-center space-x-3">
                       <CryptoIcon 
@@ -944,13 +943,13 @@ export function Deposit() {
                       />
                       <div className="text-left rtl:text-right">
                         <div className="flex items-center space-x-1.5 rtl:space-x-reverse">
-                          <span className="text-sm font-bold text-white block">{item.displayName}</span>
+                          <span className="text-sm font-bold text-tg-text block">{item.displayName}</span>
                           <VerifiedBadge className="w-3.5 h-3.5" />
                         </div>
-                        <span className="text-xs text-[#8295A8] font-medium">{item.networkFullName}</span>
+                        <span className="text-xs text-tg-hint font-medium">{item.networkFullName}</span>
                       </div>
                     </div>
-                    <ChevronRight className="w-4 h-4 text-[#8295A8]" />
+                    <ChevronRight className="w-4 h-4 text-tg-hint" />
                   </button>
                 ))}
               </div>
